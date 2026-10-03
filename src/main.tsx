@@ -6,13 +6,13 @@ import { initImagePreloader } from './utils/imagePreloader';
 // Pre-warm browser cache with critical card assets & idle prefetch
 initImagePreloader();
 
-// Register high-performance Service Worker after window load (non-blocking)
+// Ensure clean iframe preview without stale service worker interception
 if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch((err) => {
-      console.debug('ServiceWorker registration skipped:', err);
-    });
-  });
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    for (const registration of registrations) {
+      registration.unregister();
+    }
+  }).catch(() => {});
 }
 
 createRoot(document.getElementById('root')!).render(<App />);

@@ -12,32 +12,24 @@ export default defineConfig(() => {
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modify—file watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-    build: {
-      target: 'es2022',
-      cssCodeSplit: true,
-      assetsInlineLimit: 4096, // Inline assets < 4KB as data URIs to reduce HTTP roundtrips
-      chunkSizeWarningLimit: 800,
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-              return 'vendor-react';
-            }
-            if (id.includes('node_modules/motion')) {
-              return 'vendor-motion';
-            }
-            if (id.includes('node_modules/lucide-react')) {
-              return 'vendor-lucide';
-            }
-          },
-        },
-      },
+      host: true,
+      port: 3000,
+      strictPort: true,
+      allowedHosts: true as const,
+      // HMR configuration with clientPort 443 for reverse-proxy compatibility
+      hmr:
+        process.env.DISABLE_HMR === 'true'
+          ? false
+          : {
+              clientPort: 443,
+            },
+      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits
+      watch:
+        process.env.DISABLE_HMR === 'true'
+          ? null
+          : {
+              usePolling: true,
+            },
     },
   };
 });

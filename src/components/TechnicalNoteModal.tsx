@@ -231,10 +231,6 @@ ${note.takeaways}
                 priority={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/30 to-transparent pointer-events-none" />
-              <div className="absolute bottom-3 left-4 flex items-center gap-2 px-3 py-1 rounded-lg bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#38BDF8]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                <span>3D Isometric Empirical Telemetry</span>
-              </div>
             </div>
           )}
 

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { portfolioData, SkillCategory } from '../data/portfolioData';
 import { Search, ChevronDown, ChevronUp, Layers, CheckCircle2 } from 'lucide-react';
-import { AiConceptCardGraphic, AiConceptId } from './AiVisualIcons';
 import { ScrollReveal, StaggerContainer, StaggerItem } from './ScrollReveal';
 import { ResponsiveImage } from './ResponsiveImage';
 
@@ -11,23 +10,6 @@ export const SkillsSection: React.FC = () => {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
 
   const categories = ['All', ...portfolioData.skills.map((s) => s.category)];
-
-  const getCategoryConcept = (category: string): { id: AiConceptId; shape: 'circle' | 'square' } => {
-    switch (category) {
-      case 'Programming':
-        return { id: 'neural_mesh', shape: 'square' };
-      case 'Machine Learning':
-        return { id: 'gradient_landscape', shape: 'circle' };
-      case 'NLP & LLMs':
-        return { id: 'transformer_attention', shape: 'circle' };
-      case 'Tools & Environments':
-        return { id: 'lora_adaptation', shape: 'square' };
-      case 'Research Methodology':
-        return { id: 'latent_embeddings', shape: 'square' };
-      default:
-        return { id: 'neural_mesh', shape: 'circle' };
-    }
-  };
 
   const getLevelDot = (level: string) => {
     switch (level) {
@@ -145,8 +127,6 @@ export const SkillsSection: React.FC = () => {
           const visibleItems = filteredItems.slice(0, displayLimit);
           const hasMore = filteredItems.length > 4 && selectedCategory === 'All' && !searchQuery;
 
-          const concept = getCategoryConcept(cat.category);
-
           return (
             <StaggerItem
               key={cat.category}
@@ -156,10 +136,10 @@ export const SkillsSection: React.FC = () => {
               delay={(idx % 3) * 0.08}
               className="h-full container-card"
             >
-              <div className="card-premium group relative flex flex-col justify-between h-full overflow-hidden">
+              <div className="card-premium group flex flex-col justify-between h-full bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
                 {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
                 {cat.cardImage && (
-                  <div className="relative w-full aspect-[16/9] max-h-44 overflow-hidden rounded-t-[22px] border-b border-white/10 bg-[#070B12]">
+                  <div className="relative w-full aspect-[16/9] max-h-44 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={cat.cardImage}
                       alt={`${cat.category} 3D isometric conceptual vector visualization`}
@@ -167,75 +147,53 @@ export const SkillsSection: React.FC = () => {
                       gradientFallback="radial-gradient(ellipse at 50% 20%, rgba(168, 85, 247, 0.22) 0%, rgba(56, 189, 248, 0.12) 50%, #070B12 100%)"
                       className="group-hover:scale-105 transition-transform duration-500 ease-out opacity-90 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/35 to-transparent pointer-events-none" />
-                    
-                    {/* Micro Topic Pill */}
-                    <div className="absolute bottom-2.5 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#38BDF8]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                      <span>3D Isometric Neural Stack</span>
-                    </div>
-
-                    {/* Floating Top-Right Standardized Translucent Neon Icon Badge */}
-                    <div
-                      className="card-icon-badge-box"
-                      style={{
-                        ['--badge-border' as any]: 'rgba(168, 85, 247, 0.45)',
-                        ['--badge-glow' as any]: 'rgba(168, 85, 247, 0.25)',
-                        ['--badge-border-strong' as any]: '#A855F7',
-                        ['--badge-glow-strong' as any]: 'rgba(168, 85, 247, 0.7)',
-                      }}
-                      title={`${cat.category} Concept Graphic`}
-                    >
-                      <div className="card-icon-inner">
-                        <AiConceptCardGraphic
-                          id={concept.id}
-                          containerShape={concept.shape}
-                          size="sm"
-                          className="w-full h-full"
-                          glow={false}
-                        />
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1322] via-transparent to-transparent opacity-80 pointer-events-none" />
                   </div>
                 )}
 
-                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
+                <div className="p-6 sm:p-7 pt-5 sm:pt-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
                     {/* Category Header */}
-                    <div className="mb-3.5 pr-2">
-                      <h3 className="font-semibold text-slate-900 dark:text-white text-base tracking-tight group-hover:text-[#38BDF8] transition-colors">
+                    <div className="mb-3 pr-2">
+                      <div className="flex items-center justify-between gap-3 mb-2">
+                        <span className="font-mono text-xs text-cyan-400 tracking-wider uppercase block">
+                          0{idx + 1} // {cat.category.toUpperCase()}
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full text-xs font-medium border bg-cyan-500/10 text-cyan-300 border-cyan-500/20 inline-flex items-center gap-1.5">
+                          <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse shrink-0" />
+                          <span>{filteredItems.length} competencies</span>
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-white text-base sm:text-lg tracking-tight group-hover:text-cyan-400 transition-colors leading-snug min-h-[3.5rem] flex items-start">
                         {cat.category}
                       </h3>
-                      <div className="text-xs font-mono text-[#38BDF8] flex items-center gap-1.5 mt-0.5">
-                        <span>{filteredItems.length} competencies</span>
-                      </div>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal mb-5">
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal min-h-[3.5rem] my-3.5">
                       {cat.description}
                     </p>
 
-                  {/* Streamlined Competencies List (Zero-Pill Clean Typography) */}
-                  <div className="space-y-2.5">
-                    {visibleItems.map((skill, sIdx) => {
-                      return (
-                        <div
-                          key={sIdx}
-                          className="flex items-center justify-between p-2.5 rounded-xl border border-slate-200/70 dark:border-white/5 bg-slate-50/70 dark:bg-white/[0.02] hover:border-slate-300 dark:hover:border-white/15 transition-all group/item"
-                        >
-                          <span className="font-mono text-xs sm:text-sm text-slate-800 dark:text-slate-100 group-hover/item:text-[#38BDF8] transition-colors font-medium">
-                            {skill.name}
-                          </span>
-                          <div className="flex items-center gap-1.5 font-mono text-[11px] shrink-0">
-                            <span className={`h-1.5 w-1.5 rounded-full ${getLevelDot(skill.level)}`} />
-                            <span className={getLevelTextColor(skill.level)}>
-                              {skill.level}
+                    {/* Streamlined Competencies List with border-t */}
+                    <div className="pt-4 border-t border-slate-800/80 space-y-2">
+                      {visibleItems.map((skill, sIdx) => {
+                        return (
+                          <div
+                            key={sIdx}
+                            className="flex items-center justify-between p-2.5 rounded-md border border-slate-700/40 bg-slate-800/40 hover:border-cyan-500/40 transition-all group/item"
+                          >
+                            <span className="font-mono text-xs text-slate-200 group-hover/item:text-cyan-300 transition-colors font-medium">
+                              {skill.name}
                             </span>
+                            <div className="flex items-center gap-1.5 font-mono text-[11px] shrink-0">
+                              <span className={`h-1.5 w-1.5 rounded-full ${getLevelDot(skill.level)}`} />
+                              <span className={getLevelTextColor(skill.level)}>
+                                {skill.level}
+                              </span>
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                        );
+                      })}
+                    </div>
 
                   {/* Clean Expander for Secondary Skills */}
                   {hasMore && (

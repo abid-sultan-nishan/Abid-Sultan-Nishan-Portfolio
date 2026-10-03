@@ -16,7 +16,6 @@ import { useToast } from './Toast';
 import { ResponsiveImage } from './ResponsiveImage';
 import { TechnicalNoteModal } from './TechnicalNoteModal';
 import { ScrollReveal, StaggerContainer, StaggerItem } from './ScrollReveal';
-import { AiConceptCardGraphic } from './AiVisualIcons';
 
 export const PublicationsSection: React.FC = () => {
   const { showToast } = useToast();
@@ -123,10 +122,10 @@ export const PublicationsSection: React.FC = () => {
               delay={(idx % 2) * 0.08}
               className="h-full container-card"
             >
-              <div className="card-premium relative flex flex-col justify-between group h-full space-y-5 overflow-hidden">
+              <div className="card-premium relative flex flex-col justify-between group h-full space-y-4 bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
                 {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
                 {pub.cardImage && (
-                  <div className="relative w-full aspect-[16/9] max-h-48 overflow-hidden rounded-t-[22px] border-b border-white/10 bg-[#070B12]">
+                  <div className="relative w-full aspect-[16/9] max-h-48 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={pub.cardImage}
                       alt={`${pub.title} 3D isometric conceptual vector visualization`}
@@ -134,69 +133,41 @@ export const PublicationsSection: React.FC = () => {
                       gradientFallback="radial-gradient(ellipse at 50% 20%, rgba(56, 189, 248, 0.20) 0%, rgba(168, 85, 247, 0.10) 45%, #070B12 100%)"
                       className="group-hover:scale-105 transition-transform duration-500 ease-out opacity-90 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/35 to-transparent pointer-events-none" />
-                    
-                    {/* Micro Topic Pill */}
-                    <div className="absolute bottom-2.5 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#A855F7]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#A855F7] animate-pulse" />
-                      <span>3D Isometric Manuscript Vector</span>
-                    </div>
-
-                    {/* Floating Top-Right Standardized Translucent Neon Icon Badge */}
-                    <div
-                      className="card-icon-badge-box"
-                      style={{
-                        ['--badge-border' as any]: 'rgba(56, 189, 248, 0.45)',
-                        ['--badge-glow' as any]: 'rgba(56, 189, 248, 0.25)',
-                        ['--badge-border-strong' as any]: '#38BDF8',
-                        ['--badge-glow-strong' as any]: 'rgba(56, 189, 248, 0.7)',
-                      }}
-                      title={`${pub.title} Concept Graphic`}
-                    >
-                      <div className="card-icon-inner">
-                        <AiConceptCardGraphic
-                          id={idx === 0 ? 'lora_adaptation' : 'transformer_attention'}
-                          containerShape="circle"
-                          size="sm"
-                          className="w-full h-full"
-                          glow={false}
-                        />
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1322] via-transparent to-transparent opacity-80 pointer-events-none" />
                   </div>
                 )}
 
-                <div className="p-7 sm:p-8 md:p-9 pt-5 sm:pt-6 flex-1 flex flex-col justify-between space-y-5">
+                <div className="p-6 sm:p-7 pt-5 sm:pt-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 mb-4 pr-2">
-                      <span className="text-xs font-mono font-semibold text-[#A855F7] dark:text-[#C084FC] uppercase tracking-wider">
-                        {pub.category}
+                    <div className="flex flex-wrap items-center justify-between gap-3 mb-3 pr-2">
+                      <span className="font-mono text-xs text-cyan-400 tracking-wider uppercase block">
+                        0{idx + 1} // {pub.category.toUpperCase()}
                       </span>
-                      <span className="text-xs font-mono text-emerald-600 dark:text-[#34D399] flex items-center gap-1.5 font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium border bg-emerald-500/10 text-emerald-300 border-emerald-500/20 inline-flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse shrink-0" />
                         <span>{pub.status}</span>
                       </span>
                     </div>
 
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2.5 leading-snug group-hover:text-[#38BDF8] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2 leading-snug group-hover:text-cyan-400 transition-colors min-h-[3.5rem] flex items-start">
                       {pub.title}
                     </h3>
 
-                    <div className="text-xs font-mono text-slate-700 dark:text-slate-300 mb-4 font-medium">
-                      {pub.authors.join(', ')} · <span className="text-[#38BDF8]">{pub.venue}</span> ({pub.date})
+                    <div className="text-xs font-mono text-slate-400 mb-3 font-medium">
+                      {pub.authors.join(', ')} · <span className="text-cyan-400">{pub.venue}</span> ({pub.date})
                     </div>
 
-                    <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal line-clamp-3 mb-4">
+                    <p className="text-sm text-slate-300 leading-relaxed font-normal line-clamp-3 min-h-[4rem] my-3.5">
                       {pub.abstract}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+                  <div className="pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
                     <a
                       href={pub.codeUrl || portfolioData.personal.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="min-h-[40px] inline-flex items-center gap-1.5 text-[#38BDF8] hover:text-[#7DD3FC] transition-colors font-medium hover:scale-105 active:scale-95 touch-manipulation"
+                      className="min-h-[40px] inline-flex items-center gap-1.5 text-cyan-400 hover:text-cyan-300 transition-colors font-medium hover:scale-105 active:scale-95 touch-manipulation"
                     >
                       <span>Code Artifacts</span>
                       <ExternalLink className="w-3.5 h-3.5" />
@@ -204,10 +175,10 @@ export const PublicationsSection: React.FC = () => {
 
                     <button
                       onClick={() => handleCopyBibtex(pub)}
-                      className="min-h-[40px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-white/[0.04] text-slate-800 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white hover:border-[#A855F7]/40 transition-all cursor-pointer hover:scale-105 active:scale-95 touch-manipulation"
+                      className="min-h-[40px] inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-700/60 bg-slate-800/40 text-slate-300 hover:text-white hover:border-cyan-500/40 transition-all cursor-pointer hover:scale-105 active:scale-95 touch-manipulation"
                     >
                       {copiedPubId === pub.id ? (
-                        <Check className="w-3.5 h-3.5 text-[#34D399]" />
+                        <Check className="w-3.5 h-3.5 text-emerald-400" />
                       ) : (
                         <Copy className="w-3.5 h-3.5" />
                       )}
@@ -269,11 +240,11 @@ export const PublicationsSection: React.FC = () => {
             >
               <div
                 onClick={() => setSelectedNote(note)}
-                className="card-premium relative flex flex-col justify-between cursor-pointer group h-full space-y-6 overflow-hidden active:scale-[0.98]"
+                className="card-premium relative flex flex-col justify-between cursor-pointer group h-full space-y-4 bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50 active:scale-[0.98]"
               >
                 {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
                 {note.cardImage && (
-                  <div className="relative w-full aspect-[16/9] max-h-40 overflow-hidden rounded-t-[22px] border-b border-white/10 bg-[#070B12]">
+                  <div className="relative w-full aspect-[16/9] max-h-40 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={note.cardImage}
                       alt={`${note.title} 3D isometric conceptual vector visualization`}
@@ -281,79 +252,52 @@ export const PublicationsSection: React.FC = () => {
                       gradientFallback="radial-gradient(ellipse at 50% 20%, rgba(168, 85, 247, 0.20) 0%, rgba(56, 189, 248, 0.10) 45%, #070B12 100%)"
                       className="group-hover:scale-105 transition-transform duration-500 ease-out opacity-90 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/35 to-transparent pointer-events-none" />
-                    
-                    {/* Micro Topic Pill */}
-                    <div className="absolute bottom-2.5 left-4 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[9px] font-mono text-[#38BDF8]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                      <span>3D Isometric Telemetry</span>
-                    </div>
-
-                    {/* Floating Top-Right Standardized Translucent Neon Icon Badge */}
-                    <div
-                      className="card-icon-badge-box"
-                      style={{
-                        ['--badge-border' as any]: 'rgba(168, 85, 247, 0.45)',
-                        ['--badge-glow' as any]: 'rgba(168, 85, 247, 0.25)',
-                        ['--badge-border-strong' as any]: '#A855F7',
-                        ['--badge-glow-strong' as any]: 'rgba(168, 85, 247, 0.7)',
-                      }}
-                      title={`${note.title} Concept Graphic`}
-                    >
-                      <div className="card-icon-inner">
-                        <AiConceptCardGraphic
-                          id={idx % 3 === 0 ? 'gradient_landscape' : idx % 3 === 1 ? 'lora_adaptation' : 'latent_embeddings'}
-                          containerShape="square"
-                          size="sm"
-                          className="w-full h-full"
-                          glow={false}
-                        />
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1322] via-transparent to-transparent opacity-80 pointer-events-none" />
                   </div>
                 )}
 
-                <div className="p-7 sm:p-8 flex-1 flex flex-col justify-between space-y-5">
+                <div className="p-6 sm:p-7 pt-5 sm:pt-6 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    <div className="flex items-center justify-between text-xs font-mono text-slate-600 dark:text-slate-300 mb-3.5 pr-2">
-                      <span className="text-[#38BDF8] font-semibold uppercase tracking-wider">
-                        {note.category}
+                    <div className="flex items-center justify-between text-xs mb-3 pr-2">
+                      <span className="font-mono text-xs text-cyan-400 tracking-wider uppercase block">
+                        0{idx + 1} // {note.category.toUpperCase()}
                       </span>
-                      <span className="flex items-center gap-1.5 text-slate-500 dark:text-slate-400">
-                        <Clock className="w-3.5 h-3.5" />
-                        {note.readTime}
+                      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium border bg-cyan-500/10 text-cyan-300 border-cyan-500/20 inline-flex items-center gap-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse shrink-0" />
+                        <Clock className="w-3 h-3 text-cyan-400" />
+                        <span>{note.readTime}</span>
                       </span>
                     </div>
 
-                    <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2.5 leading-snug group-hover:text-[#38BDF8] transition-colors">
+                    <h4 className="text-base sm:text-lg font-bold text-white mb-2 leading-snug group-hover:text-cyan-400 transition-colors min-h-[3.5rem] flex items-start">
                       {note.title}
                     </h4>
 
-                    <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-normal line-clamp-3 mb-4">
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal line-clamp-3 min-h-[3.75rem] my-3.5">
                       {note.summary}
                     </p>
 
-                  {/* Tags with clean contrast */}
-                  <div className="flex flex-wrap gap-1.5 mb-2">
-                    {note.tags.slice(0, 3).map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        className="text-xs font-mono px-2.5 py-0.5 rounded-lg bg-slate-100 dark:bg-white/[0.04] text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-white/10 font-medium"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
+                    {/* Dark Rounded Pill Tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      {note.tags.slice(0, 3).map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="font-mono text-[11px] bg-slate-800/40 border border-slate-700/40 text-slate-300 rounded-md px-2.5 py-1"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-3.5 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
+                    <span className="text-slate-400">{note.date}</span>
+                    <span className="text-cyan-400 flex items-center gap-1 font-semibold group-hover:underline">
+                      <span>Read Note</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                    </span>
                   </div>
                 </div>
-
-                <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-500 dark:text-slate-400">{note.date}</span>
-                  <span className="text-[#38BDF8] flex items-center gap-1 font-semibold group-hover:underline">
-                    <span>Read Note</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </span>
-                </div>
-              </div>
             </div>
           </StaggerItem>
           ))}

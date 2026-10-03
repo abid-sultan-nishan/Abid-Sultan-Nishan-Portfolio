@@ -136,10 +136,10 @@ export const ResearchSection: React.FC = () => {
               delay={(idx % 3) * 0.08}
               className="h-full container-card"
             >
-              <div className="card-premium group relative flex flex-col justify-between h-full overflow-hidden">
+              <div className="card-premium group flex flex-col justify-between h-full bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
                 {/* 4:3 Isometric Vector Illustration Header Banner */}
                 {interest.cardImage && (
-                  <div className="relative w-full aspect-[4/3] max-h-48 overflow-hidden rounded-t-[22px] border-b border-white/10 bg-[#070B12]">
+                  <div className="relative w-full aspect-[4/3] max-h-48 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={interest.cardImage}
                       alt={`${interest.title} 3D isometric conceptual illustration`}
@@ -148,61 +148,55 @@ export const ResearchSection: React.FC = () => {
                       gradientFallback={TOPIC_GRADIENTS[interest.id]}
                       className="group-hover:scale-105 transition-transform duration-500 ease-out opacity-90 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/35 to-transparent pointer-events-none" />
-                    
-                    {/* Micro Topic Pill */}
-                    <div className="absolute bottom-3 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#38BDF8]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                      <span>3D Isometric Neural Architecture</span>
-                    </div>
-
-                    {/* Floating Top-Right Standardized Translucent Neon Icon Badge */}
-                    <div
-                      className={`card-icon-badge-box ${concept.borderClasses} ${concept.glowClasses} ${concept.hoverGlowClasses}`}
-                      style={{ backgroundColor: 'rgba(255, 255, 255, 0.05)' }}
-                      title={`${interest.title} Vector Graphic`}
-                    >
-                      <div className="card-icon-inner pointer-events-none">
-                        {concept.renderIcon('w-full h-full')}
-                      </div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d1322] via-transparent to-transparent opacity-80 pointer-events-none" />
                   </div>
                 )}
 
-                <div className="p-7 sm:p-8 pt-5 sm:pt-6 flex-1 flex flex-col justify-between space-y-6">
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-4">
                   <div>
-                    {/* Clean Left-Aligned Header */}
-                    <div className="mb-3 pr-2">
-                      <span className={`font-mono text-xs font-semibold flex items-center gap-1.5 ${concept.kickerColor}`}>
-                        0{idx + 1} · {interest.id.toUpperCase().replace('-', ' ')}
+                    {/* Category & Title */}
+                    <div className="mb-2.5">
+                      <span className="font-mono text-xs text-cyan-400 tracking-wider uppercase block">
+                        0{idx + 1} // {interest.id.toUpperCase().replace('-', ' ')}
                       </span>
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#0284C7] dark:group-hover:text-[#38BDF8] transition-colors leading-snug mt-1">
+                      <h3 className="text-base sm:text-lg font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug mt-1.5 min-h-[3.5rem] flex items-start">
                         {interest.title}
                       </h3>
                     </div>
 
-                    {/* Clean Unboxed Status Indicator */}
-                    <div className="flex items-center gap-2 mb-4 font-mono text-xs">
-                      <span className={`h-1.5 w-1.5 rounded-full ${statusStyle.dot}`} />
-                      <span className={`${statusStyle.text} font-medium`}>{interest.status}</span>
+                    {/* Status Pill Badge with dynamic tint */}
+                    <div className="mb-3.5">
+                      <span
+                        className={`px-2.5 py-0.5 rounded-full text-xs font-medium border inline-flex items-center gap-1.5 ${
+                          interest.status.toLowerCase().includes('interest')
+                            ? 'bg-amber-500/10 text-amber-300 border-amber-500/20'
+                            : interest.status.toLowerCase().includes('exploring') || interest.status.toLowerCase().includes('investigation')
+                            ? 'bg-purple-500/10 text-purple-300 border-purple-500/20'
+                            : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
+                        }`}
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse shrink-0" />
+                        <span>{interest.status}</span>
+                      </span>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal mb-4">
+                    <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal min-h-[4rem] my-3.5">
                       {interest.description}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-slate-200 dark:border-white/10">
-                    <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">
+                  {/* Key Explorations Section */}
+                  <div className="pt-4 border-t border-slate-800/80">
+                    <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2.5 font-medium">
                       Key Explorations:
                     </div>
-                    <div className="flex flex-wrap gap-x-2 gap-y-1 text-xs font-mono text-slate-700 dark:text-slate-300">
+                    <div className="flex flex-wrap gap-2">
                       {interest.keyTopics.map((topic, tIdx) => (
-                        <span key={tIdx} className="text-slate-600 dark:text-slate-300">
+                        <span
+                          key={tIdx}
+                          className="font-mono text-[11px] bg-slate-800/40 border border-slate-700/40 text-slate-300 rounded-md px-2.5 py-1"
+                        >
                           {topic}
-                          {tIdx < interest.keyTopics.length - 1 && (
-                            <span className="text-slate-400 dark:text-slate-600 ml-2">·</span>
-                          )}
                         </span>
                       ))}
                     </div>

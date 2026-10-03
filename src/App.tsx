@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ToastProvider } from './components/Toast';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -18,16 +18,8 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { BackgroundCanvas } from './components/BackgroundCanvas';
 import { FloatingQuickNav } from './components/FloatingQuickNav';
-
-// Code-split heavy below-the-fold modals to minimize initial render bundle
-const ResumeModal = lazy(() =>
-  import('./components/ResumeModal').then((m) => ({ default: m.ResumeModal }))
-);
-const AiConceptIllustrationsModal = lazy(() =>
-  import('./components/AiConceptIllustrationsModal').then((m) => ({
-    default: m.AiConceptIllustrationsModal,
-  }))
-);
+import { ResumeModal } from './components/ResumeModal';
+import { AiConceptIllustrationsModal } from './components/AiConceptIllustrationsModal';
 
 export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
@@ -89,25 +81,21 @@ export default function App() {
         {/* Floating Quick Action & Reading Progress Pill */}
         <FloatingQuickNav onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Full Curriculum Vitae Modal (Lazy-Loaded) */}
-        <Suspense fallback={null}>
-          {isResumeOpen && (
-            <ResumeModal
-              isOpen={isResumeOpen}
-              onClose={() => setIsResumeOpen(false)}
-            />
-          )}
-        </Suspense>
+        {/* Full Curriculum Vitae Modal */}
+        {isResumeOpen && (
+          <ResumeModal
+            isOpen={isResumeOpen}
+            onClose={() => setIsResumeOpen(false)}
+          />
+        )}
 
-        {/* AI Conceptual Vector Line-Art & Artwork Showcase Modal (Lazy-Loaded) */}
-        <Suspense fallback={null}>
-          {isAiConceptsOpen && (
-            <AiConceptIllustrationsModal
-              isOpen={isAiConceptsOpen}
-              onClose={() => setIsAiConceptsOpen(false)}
-            />
-          )}
-        </Suspense>
+        {/* AI Conceptual Vector Line-Art & Artwork Showcase Modal */}
+        {isAiConceptsOpen && (
+          <AiConceptIllustrationsModal
+            isOpen={isAiConceptsOpen}
+            onClose={() => setIsAiConceptsOpen(false)}
+          />
+        )}
       </div>
     </ToastProvider>
   );

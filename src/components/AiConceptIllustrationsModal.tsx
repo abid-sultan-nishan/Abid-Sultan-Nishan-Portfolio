@@ -256,16 +256,6 @@ export const AiConceptIllustrationsModal: React.FC<AiConceptIllustrationsModalPr
                       priority={true}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17]/85 via-transparent to-transparent pointer-events-none" />
-                    
-                    <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-xs font-mono">
-                      <div className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0B0F17]/90 backdrop-blur-md border border-white/10 text-[#38BDF8]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                        <span>3D Isometric Neural Architecture</span>
-                      </div>
-                      <span className="text-[10px] text-slate-400 font-mono bg-black/60 px-2 py-0.5 rounded border border-white/10">
-                        Zero Text In Imagery
-                      </span>
-                    </div>
                   </div>
 
                   {/* Right: Topic Specs */}
@@ -380,16 +370,6 @@ export const AiConceptIllustrationsModal: React.FC<AiConceptIllustrationsModalPr
                       className="group-hover/preview:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17]/80 via-transparent to-transparent pointer-events-none" />
-                    
-                    <div className="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-xs font-mono">
-                      <div className="flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#0B0F17]/90 backdrop-blur-md border border-white/10 text-[#38BDF8]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                        <span>3D Isometric Neural Architecture</span>
-                      </div>
-                      <span className="text-[10px] text-slate-400 font-mono bg-black/60 px-2 py-0.5 rounded border border-white/10">
-                        Zero Text In Asset
-                      </span>
-                    </div>
                   </div>
 
                   {/* Right: Topic Specs */}

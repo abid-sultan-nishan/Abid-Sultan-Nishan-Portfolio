@@ -97,52 +97,38 @@ export const EducationSection: React.FC = () => {
         <div className="relative pl-6 sm:pl-8 border-l-2 border-[#38BDF8] ml-2 sm:ml-4">
           <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-white dark:bg-[#0B0F17] border-2 border-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.7)]" />
 
-          <div className="card-premium container-card relative p-6 sm:p-8 space-y-6 overflow-hidden">
+          <div className="card-premium container-card group relative p-6 sm:p-7 space-y-4 bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
             {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
             {edu.cardImage && (
-              <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] max-h-48 overflow-hidden rounded-2xl border border-white/10 bg-[#070B12] -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 mb-5">
+              <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] max-h-48 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12] -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 mb-5">
                 <ResponsiveImage
                   src={edu.cardImage}
                   alt={`${edu.degree} 3D isometric conceptual illustration`}
                   wrapperClassName="w-full h-full"
                   gradientFallback="radial-gradient(ellipse at 50% 20%, rgba(56, 189, 248, 0.2) 0%, rgba(168, 85, 247, 0.1) 45%, #070B12 100%)"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/35 to-transparent pointer-events-none" />
-                <div className="absolute bottom-2.5 left-4 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#38BDF8]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                  <span>3D Isometric Academic Foundations</span>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1322] via-transparent to-transparent opacity-80 pointer-events-none" />
               </div>
             )}
 
-            {/* Floating Top-Right Standardized Translucent Neon Icon Badge */}
-            <div
-              className="card-icon-badge-box"
-              style={{
-                ['--badge-border' as any]: 'rgba(56, 189, 248, 0.45)',
-                ['--badge-glow' as any]: 'rgba(56, 189, 248, 0.25)',
-                ['--badge-border-strong' as any]: '#38BDF8',
-                ['--badge-glow-strong' as any]: 'rgba(56, 189, 248, 0.7)',
-              }}
-              title="Uttara University Academic Degree Badge"
-            >
-              <div className="card-icon-inner">
-                <GraduationCap className="w-7 h-7 text-[#38BDF8]" />
-              </div>
-            </div>
-
             {/* Degree & Institution */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-5 pr-16 sm:pr-20">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-5">
               <div>
-                <div className="inline-flex items-center gap-2 text-xs font-mono text-[#0284C7] dark:text-[#38BDF8] mb-1 font-semibold">
-                  <GraduationCap className="w-4 h-4" />
-                  <span>{edu.statusBadge}</span>
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="font-mono text-xs text-cyan-400 tracking-wider uppercase block">
+                    01 // UNDERGRADUATE DEGREE
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-xs font-medium border bg-cyan-500/10 text-cyan-300 border-cyan-500/20 inline-flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse shrink-0" />
+                    <GraduationCap className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>{edu.statusBadge}</span>
+                  </span>
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
                   {edu.degree}
                 </h3>
-                <div className="text-base text-[#7C3AED] dark:text-[#C084FC] font-medium mt-1">
+                <div className="text-base text-purple-400 font-medium mt-1">
                   {edu.institution}
                 </div>
               </div>
@@ -358,10 +344,6 @@ export const EducationSection: React.FC = () => {
                           className="w-full h-full object-cover object-center"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F17] via-[#0B0F17]/35 to-transparent pointer-events-none" />
-                        <div className="absolute bottom-2.5 left-3.5 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-[#0B0F17]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#38BDF8]">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#38BDF8] animate-pulse" />
-                          <span>3D Isometric Milestone Trajectory</span>
-                        </div>
                       </div>
                     )}
                     <p className="text-sm text-slate-700 dark:text-slate-200 leading-relaxed font-normal">

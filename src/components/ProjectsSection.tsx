@@ -71,6 +71,7 @@ export const ProjectsSection: React.FC = () => {
           >
             <ProjectCard
               project={project}
+              index={idx}
               onSelect={(proj) => setSelectedProject(proj)}
             />
           </StaggerItem>
