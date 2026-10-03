@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abid Sultan Nishan · Research Publications &amp; Technical Notes</title>
+    <link>https://github.com/abid-sultan-nishan</link>
+    <description>Research publications, empirical investigation logs, and technical notes in NLP, LLMs, and Deep Learning by Abid Sultan Nishan.</description>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 30 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="/rss.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>abidsultannishan999@gmail.com (Abid Sultan Nishan)</managingEditor>
+    <webMaster>abidsultannishan999@gmail.com (Abid Sultan Nishan)</webMaster>
+    <category>Natural Language Processing</category>
+    <category>Large Language Models</category>
+    <category>Deep Learning</category>
+  </channel>
+</rss>

@@ -1,0 +1,16 @@
+{
+  "name": "Abid Sultan Nishan · NLP, LLM & Deep Learning Researcher",
+  "short_name": "Nishan Portfolio",
+  "description": "Personal research portfolio of Abid Sultan Nishan, an NLP, LLM, and Deep Learning researcher.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F17",
+  "theme_color": "#0B0F17",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

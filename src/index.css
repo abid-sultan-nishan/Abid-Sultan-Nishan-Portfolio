@@ -1,0 +1,1059 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root, html.dark {
+    --bg-main: #0B0F17;
+    --surface-elevated: #111827;
+    --surface-secondary: #0F172A;
+    --surface-input: #0B0F17;
+    --text-primary: #F8FAFC;
+    --text-secondary: #E2E8F0;
+    --text-muted: #CBD5E1;
+    --accent-violet: #A855F7;
+    --accent-purple: #A855F7;
+    --accent-cyan: #38BDF8;
+    --border-subtle: rgba(255, 255, 255, 0.12);
+    --border-strong: rgba(255, 255, 255, 0.20);
+    --border-glass: rgba(255, 255, 255, 0.14);
+    --card-shadow: 0 12px 36px -5px rgba(0, 0, 0, 0.65);
+    --badge-bg: rgba(17, 24, 39, 0.85);
+
+    /* Fluid Typography System using clamp(min, preferred, max) */
+    --font-display-hero: clamp(2rem, 1.35rem + 3.2vw, 3.85rem);
+    --font-h1: clamp(1.75rem, 1.25rem + 2.5vw, 3.25rem);
+    --font-h2: clamp(1.45rem, 1.1rem + 1.8vw, 2.5rem);
+    --font-h3: clamp(1.15rem, 0.95rem + 1vw, 1.75rem);
+    --font-body-lg: clamp(1rem, 0.94rem + 0.35vw, 1.2rem);
+    --font-body: clamp(0.875rem, 0.84rem + 0.18vw, 1rem);
+    --font-body-sm: clamp(0.75rem, 0.72rem + 0.15vw, 0.875rem);
+    --font-mono-xs: clamp(0.6875rem, 0.65rem + 0.12vw, 0.8125rem);
+
+    /* Fluid Spacing Scale */
+    --space-section-y: clamp(3.5rem, 2.5rem + 4.5vw, 7rem);
+    --space-card-p: clamp(1rem, 0.75rem + 1.1vw, 2rem);
+    --space-grid-gap: clamp(1rem, 0.8rem + 0.9vw, 1.75rem);
+
+    /* Safe Area insets */
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+  }
+
+  html.light {
+    --bg-main: #F8FAFC;
+    --surface-elevated: #FFFFFF;
+    --surface-secondary: #F1F5F9;
+    --surface-input: #FFFFFF;
+    --text-primary: #1E293B;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --accent-violet: #7C3AED;
+    --accent-cyan: #0284C7;
+    --border-subtle: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --badge-bg: #F1F5F9;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    transition: background-color 0.25s ease, color 0.25s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+  }
+
+  code, pre, .font-mono {
+    font-family: 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-feature-settings: "liga" 1, "calt" 1;
+    tab-size: 2;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Space Grotesk', 'Plus Jakarta Sans', 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+    line-height: 1.18;
+  }
+
+  /* Interactive Elements Touch Optimization - Eliminates 300ms mobile tap delay */
+  button, a, input, select, textarea, [role="button"], [role="tab"] {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent Safari from automatically zooming into inputs if font-size < 16px */
+  @media (max-width: 768px) {
+    input:not([type="checkbox"]):not([type="radio"]), textarea, select {
+      font-size: 16px !important;
+    }
+  }
+
+  /* GPU Hardware Acceleration & 60-120 FPS Rendering */
+  .gpu-accelerated {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform, opacity;
+  }
+
+  /* Content Visibility Optimization: Skips offscreen layout work until scrolled */
+  #about, #research, #projects, #skills, #education, #publications, #contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 750px;
+  }
+
+  /* Zero Layout Shift (CLS) Rules */
+  img, svg, canvas {
+    max-width: 100%;
+    height: auto;
+    content-visibility: auto;
+  }
+}
+
+/* Fluid Typography Helper Classes */
+.fluid-display {
+  font-size: var(--font-display-hero);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.fluid-h1 {
+  font-size: var(--font-h1);
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.fluid-h2 {
+  font-size: var(--font-h2);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.fluid-h3 {
+  font-size: var(--font-h3);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.fluid-body-lg {
+  font-size: var(--font-body-lg);
+  line-height: 1.6;
+}
+
+.fluid-body {
+  font-size: var(--font-body);
+  line-height: 1.55;
+}
+
+.fluid-body-sm {
+  font-size: var(--font-body-sm);
+  line-height: 1.5;
+}
+
+.fluid-section-py {
+  padding-top: var(--space-section-y);
+  padding-bottom: var(--space-section-y);
+}
+
+/* CSS Container Query Support */
+.container-card {
+  container-type: inline-size;
+  container-name: card;
+}
+
+/* When a card container is narrow (< 380px), ensure inner elements adapt cleanly */
+@container card (max-width: 380px) {
+  .container-stack-on-narrow {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+  .container-hide-on-narrow {
+    display: none !important;
+  }
+  .container-text-compact {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0F17;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.65);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid #38BDF8 !important;
+  outline-offset: 2px !important;
+}
+
+/* Hardware-Accelerated Smooth Interaction Classes */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Executive Glassmorphism & Ultra-Premium Card Utilities */
+.card-premium {
+  position: relative;
+  background: rgba(16, 23, 38, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.08), 0 16px 40px -12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease,
+              background-color 0.3s ease;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+  overflow: hidden;
+}
+
+/* Fallback for browsers without backdrop-filter support */
+@supports not ((-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px))) {
+  .card-premium {
+    background: rgba(16, 23, 38, 0.96) !important;
+  }
+}
+
+html.light .card-premium {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease !important;
+}
+
+html.light .card-premium::before {
+  display: none !important;
+}
+
+.card-premium::before {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.3) 30%, rgba(168, 85, 247, 0.4) 70%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-premium:hover {
+    background: rgba(22, 33, 56, 0.82);
+    border-color: rgba(56, 189, 248, 0.38);
+    transform: translate3d(0, -4px, 0);
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+                0 24px 50px -12px rgba(0, 0, 0, 0.65),
+                0 0 35px -5px rgba(56, 189, 248, 0.2),
+                0 0 25px -5px rgba(168, 85, 247, 0.15);
+  }
+
+  html.light .card-premium:hover {
+    background: #FFFFFF !important;
+    border-color: #CBD5E1 !important;
+    transform: translate3d(0, -4px, 0) !important;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04), 0 0 16px -2px rgba(2, 132, 199, 0.12) !important;
+  }
+
+  .card-premium:hover::before {
+    opacity: 1;
+  }
+}
+
+.card-featured-glow {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.7) 0%, rgba(56, 189, 248, 0.6) 50%, rgba(129, 140, 248, 0.5) 100%);
+  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.25), 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+}
+
+html.light .card-featured-glow {
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.35) 0%, rgba(2, 132, 199, 0.3) 50%, rgba(99, 102, 241, 0.25) 100%) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(124, 58, 237, 0.08) !important;
+}
+
+.card-featured-glow:hover {
+  box-shadow: 0 0 45px -2px rgba(168, 85, 247, 0.45), 0 0 30px 0 rgba(56, 189, 248, 0.35), 0 25px 50px -10px rgba(0, 0, 0, 0.75);
+  transform: translateY(-4px);
+}
+
+html.light .card-featured-glow:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 0 25px -2px rgba(2, 132, 199, 0.15), 0 0 20px -2px rgba(124, 58, 237, 0.15) !important;
+  transform: translateY(-4px) !important;
+}
+
+.card-inner-elevated {
+  background: rgba(14, 21, 37, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: calc(1.5rem - 1px);
+}
+
+html.light .card-inner-elevated {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-radius: calc(1.5rem - 1px);
+}
+
+.card-subtle {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform, box-shadow;
+}
+
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .card-subtle {
+    background: rgba(20, 28, 45, 0.95) !important;
+  }
+}
+
+.card-premium,
+.card-subtle,
+.card-featured-glow,
+.card-inner-elevated {
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+/* =========================================================================
+   UNIVERSAL CARD ICON BADGE & CONTAINER STYLING
+   Uniformly applied across EVERY card in the application:
+   - Research Directions
+   - Selected Work Projects
+   - Skills & Competencies Category Cards
+   - Research Notes & Experiment Logs
+   - Academic Degree & Milestone Cards
+   ========================================================================= */
+.card-icon-badge-box,
+.research-icon-badge-box,
+.project-icon-badge-box,
+.skill-icon-badge-box {
+  position: absolute !important;
+  top: 1.25rem !important;
+  right: 1.25rem !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  border-radius: 1rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid var(--badge-border, rgba(56, 189, 248, 0.35)) !important;
+  box-shadow: 0 0 16px -2px var(--badge-glow, rgba(56, 189, 248, 0.25)) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 25 !important;
+  box-sizing: border-box !important;
+  cursor: pointer !important;
+}
+
+html.light .card-icon-badge-box,
+html.light .research-icon-badge-box,
+html.light .project-icon-badge-box,
+html.light .skill-icon-badge-box {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border: 1px solid var(--badge-border-light, #CBD5E1) !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 0 12px -2px var(--badge-glow, rgba(56, 189, 248, 0.15)) !important;
+}
+
+.card-premium:hover .card-icon-badge-box,
+.card-featured-glow:hover .card-icon-badge-box,
+.card-icon-badge-box:hover {
+  transform: scale(1.08) !important;
+  box-shadow: 0 0 28px var(--badge-glow-strong, rgba(56, 189, 248, 0.65)),
+              0 0 10px rgba(255, 255, 255, 0.2) !important;
+  border-color: var(--badge-border-strong, #00E5FF) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.card-icon-inner,
+.research-icon-inner,
+.project-icon-inner,
+.skill-icon-inner {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+}
+
+.card-icon-inner svg,
+.research-icon-inner svg,
+.project-icon-inner svg,
+.skill-icon-inner svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  filter: drop-shadow(0 0 4px var(--badge-glow, rgba(56, 189, 248, 0.35))) !important;
+}
+
+@media (max-width: 640px) {
+  .card-icon-badge-box,
+  .research-icon-badge-box,
+  .project-icon-badge-box,
+  .skill-icon-badge-box {
+    top: 1.25rem !important;
+    right: 1.25rem !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    border-radius: 0.85rem !important;
+  }
+  .card-icon-inner,
+  .research-icon-inner,
+  .project-icon-inner,
+  .skill-icon-inner {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}
+
+html.light .card-subtle {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+.card-subtle:hover {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-color: rgba(56, 189, 248, 0.38);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 12px 28px -6px rgba(0, 0, 0, 0.45), 0 0 22px -3px rgba(56, 189, 248, 0.22);
+  transform: translateY(-4px);
+}
+
+html.light .card-subtle:hover {
+  background: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.06), 0 0 12px -2px rgba(2, 132, 199, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(168, 85, 247, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 25px -4px rgba(56, 189, 248, 0.15);
+}
+
+.btn-glow-purple {
+  background: linear-gradient(135deg, #A855F7 0%, #7C3AED 100%);
+  box-shadow: 0 0 20px -3px rgba(168, 85, 247, 0.45);
+  transition: all 0.25s ease;
+}
+
+.btn-glow-purple:hover {
+  box-shadow: 0 0 30px 2px rgba(168, 85, 247, 0.7);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-glow-cyan {
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+  box-shadow: 0 0 20px -3px rgba(56, 189, 248, 0.45);
+  transition: all 0.25s ease;
+}
+
+.btn-glow-cyan:hover {
+  box-shadow: 0 0 30px 2px rgba(56, 189, 248, 0.7);
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 0 20px -3px rgba(56, 189, 248, 0.25);
+  transform: translateY(-1px);
+}
+
+/* Specifically target the 'Test Live Model Inference Sandbox' button / element */
+.btn-sandbox-trigger {
+  position: relative;
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.16s ease,
+              border-color 0.16s ease,
+              background-color 0.16s ease,
+              box-shadow 0.16s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform, box-shadow;
+}
+
+.btn-sandbox-trigger:hover {
+  transform: scale(1.05) !important;
+  color: #00F0FF !important; /* Bright high-contrast Neon Blue */
+  border-color: #00E5FF !important;
+  background-color: rgba(0, 229, 255, 0.14) !important;
+  box-shadow: 0 0 22px -2px rgba(0, 229, 255, 0.55),
+              0 0 10px 0 rgba(56, 189, 248, 0.35) !important;
+}
+
+.btn-sandbox-trigger:active {
+  transform: scale(1.02) !important;
+}
+
+html.light .btn-sandbox-trigger:hover {
+  transform: scale(1.05) !important;
+  color: #0284C7 !important;
+  border-color: #00E5FF !important;
+  background-color: rgba(224, 242, 254, 0.95) !important;
+  box-shadow: 0 0 18px -2px rgba(0, 229, 255, 0.4),
+              0 4px 10px -2px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Animated gradient border utility */
+@keyframes border-glow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.animate-border-gradient {
+  background-size: 200% 200%;
+  animation: border-glow 6s ease infinite;
+}
+
+/* Light Mode Comprehensive Theme Adaptations */
+html.light {
+  color-scheme: light;
+}
+
+html.light body {
+  background-color: #F8FAFC !important;
+  color: #1E293B !important;
+}
+
+/* 1. Light Background Palette & Container Backgrounds */
+html.light .bg-\[\#07111F\]:not(.terminal-dark),
+html.light .bg-\[\#07111F\]\/90:not(.terminal-dark),
+html.light .bg-\[\#07111F\]\/80:not(.terminal-dark),
+html.light .bg-\[\#07111F\]\/70:not(.terminal-dark),
+html.light .bg-\[\#07111F\]\/60:not(.terminal-dark),
+html.light .bg-\[\#081322\],
+html.light .bg-\[\#091424\] {
+  background-color: #F8FAFC !important;
+}
+
+html.light .bg-\[\#0B1728\],
+html.light .bg-\[\#0B1728\]\/95,
+html.light .bg-\[\#0B1728\]\/90,
+html.light .bg-\[\#0B1728\]\/80,
+html.light .bg-\[\#0B1728\]\/70,
+html.light .bg-\[\#060D18\],
+html.light .bg-\[\#0D1B2A\],
+html.light .bg-\[\#0D1B2A\]\/90,
+html.light .bg-\[\#0D1B2A\]\/80 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .bg-slate-900\/90,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/85,
+html.light .bg-slate-900 {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light .bg-slate-800\/80,
+html.light .bg-slate-800\/90,
+html.light .bg-slate-800 {
+  background-color: #F1F5F9 !important;
+}
+
+html.light .bg-gradient-to-b.from-\[\#0D1E36\]\/90.to-\[\#0B1728\]\/95,
+html.light .bg-gradient-to-b.from-\[\#0D1E36\]\/90.to-\[\#0B1728\]\/90,
+html.light .bg-gradient-to-b.from-\[\#0D1D33\].to-\[\#0B1728\] {
+  background-image: none !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 2. Text Color Hierarchy & High Visibility in Light Mode */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4,
+html.light h5,
+html.light h6,
+html.light .font-display {
+  color: #1E293B !important;
+}
+
+html.light p,
+html.light .text-secondary {
+  color: #475569 !important;
+}
+
+html.light .text-slate-900 {
+  color: #1E293B !important;
+}
+
+html.light .text-slate-800 {
+  color: #1E293B !important;
+}
+
+html.light .text-slate-700 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-600 {
+  color: #475569 !important;
+}
+
+html.light .text-slate-500 {
+  color: #64748B !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+
+html.light .text-slate-300 {
+  color: #475569 !important;
+}
+
+html.light .text-slate-200 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-100 {
+  color: #1E293B !important;
+}
+
+/* Default dark text for white elements on light canvas */
+html.light .text-white:not([class*="bg-gradient"]):not([class*="from-"]):not([class*="bg-violet"]):not([class*="bg-purple"]):not([class*="bg-sky"]):not([class*="bg-blue"]):not([class*="bg-emerald"]):not(.keep-white) {
+  color: #1E293B !important;
+}
+
+/* Preserve crisp white text on buttons and gradient elements */
+html.light button.bg-gradient-to-r,
+html.light a.bg-gradient-to-r,
+html.light .bg-gradient-to-r button,
+html.light .btn-glow-purple,
+html.light .btn-glow-cyan,
+html.light [class*="from-\[#A855F7\]"],
+html.light [class*="from-\[#A855F7\]"] span,
+html.light [class*="from-\[#38BDF8\]"] span,
+html.light [class*="from-\[#0284C7\]"],
+html.light [class*="from-\[#0284C7\]"] span,
+html.light .photo-overlay-badge h3,
+html.light .photo-overlay-badge div,
+html.light .photo-overlay-badge span:not([class*="text-"]) {
+  color: #FFFFFF !important;
+}
+
+/* 3. Card & Container Styling (White Background, Subtle #E2E8F0 Borders, 0 4px 6px Shadow) */
+html.light .card-premium,
+html.light .glass-card {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .card-inner-elevated {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html.light .card-subtle {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 4. Accent Colors, Badges & Status Indicators in Light Mode */
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html.light [class*="text-\[\#38BDF8\]"] {
+  color: #0284C7 !important;
+}
+
+html.light .text-violet-400,
+html.light .text-violet-300,
+html.light [class*="text-\[\#A855F7\]"],
+html.light [class*="text-\[\#C084FC\]"] {
+  color: #7C3AED !important;
+}
+
+html.light .text-emerald-400,
+html.light [class*="text-\[\#34D399\]"],
+html.light .text-emerald-500 {
+  color: #059669 !important;
+}
+
+html.light .text-amber-400,
+html.light .text-amber-400\/90,
+html.light .text-amber-300,
+html.light .text-amber-500 {
+  color: #B45309 !important;
+}
+
+/* Status indicator dots */
+html.light .bg-amber-400 {
+  background-color: #D97706 !important;
+}
+
+html.light .bg-emerald-400,
+html.light .bg-\[\#34D399\] {
+  background-color: #059669 !important;
+}
+
+html.light .bg-\[\#38BDF8\] {
+  background-color: #0284C7 !important;
+}
+
+html.light .bg-\[\#A855F7\] {
+  background-color: #7C3AED !important;
+}
+
+/* Badges with soft tinted backgrounds & crisp colored text */
+html.light [class*="bg-violet-950"],
+html.light [class*="bg-\[\#A855F7\]\/10"],
+html.light [class*="bg-\[\#A855F7\]\/15"],
+html.light [class*="bg-\[\#A855F7\]\/20"] {
+  background-color: #F5F3FF !important;
+  color: #7C3AED !important;
+  border: 1px solid #DDD6FE !important;
+}
+
+html.light [class*="bg-cyan-950"],
+html.light [class*="bg-\[\#38BDF8\]\/10"],
+html.light [class*="bg-\[\#38BDF8\]\/15"],
+html.light [class*="bg-\[\#38BDF8\]\/20"] {
+  background-color: #F0F9FF !important;
+  color: #0284C7 !important;
+  border: 1px solid #BAE6FD !important;
+}
+
+html.light [class*="bg-emerald-950"],
+html.light [class*="bg-emerald-500\/10"],
+html.light [class*="bg-emerald-500\/15"],
+html.light [class*="bg-emerald-500\/20"] {
+  background-color: #ECFDF5 !important;
+  color: #059669 !important;
+  border: 1px solid #A7F3D0 !important;
+}
+
+html.light [class*="bg-amber-950"],
+html.light [class*="bg-amber-500\/10"],
+html.light [class*="bg-amber-500\/15"],
+html.light [class*="bg-amber-500\/20"] {
+  background-color: #FFFBEB !important;
+  color: #B45309 !important;
+  border: 1px solid #FDE68A !important;
+}
+
+/* Technology and stack chips in Light Mode */
+html.light [class*="border-slate-200\/70"][class*="bg-slate-100\/60"],
+html.light [class*="border-slate-200\/80"][class*="bg-slate-50\/80"],
+html.light [class*="border-slate-200\/70"][class*="bg-slate-50\/70"] {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #334155 !important;
+}
+
+/* Hairline border consistency in Light Mode */
+html.light .border-slate-200,
+html.light .border-slate-200\/90,
+html.light .border-slate-200\/80,
+html.light .border-slate-200\/70,
+html.light .border-slate-300,
+html.light .border-slate-700,
+html.light .border-slate-800,
+html.light .border-slate-800\/90,
+html.light .border-slate-800\/80,
+html.light .border-slate-900 {
+  border-color: #E2E8F0 !important;
+}
+
+/* 5. Smooth Hover Effects (Clean Shadow Elevation & Subtle Glow) */
+html.light .card-premium:hover,
+html.light .glass-card:hover {
+  background: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04), 0 0 16px -2px rgba(2, 132, 199, 0.12) !important;
+}
+
+html.light .card-featured-glow:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 0 25px -2px rgba(2, 132, 199, 0.15), 0 0 20px -2px rgba(124, 58, 237, 0.15) !important;
+  transform: translateY(-4px) !important;
+}
+
+html.light .card-subtle:hover {
+  background: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.06), 0 0 12px -2px rgba(2, 132, 199, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+html.light .btn-glass {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #334155 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: none !important;
+}
+
+html.light .btn-glass:hover {
+  background: #F8FAFC !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Form input adaptations in light mode */
+html.light input:not([type="checkbox"]):not([type="radio"]),
+html.light textarea {
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #1E293B !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus {
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
+}
+
+/* Gradient headline text in light mode */
+html.light .bg-gradient-to-r.from-cyan-300.via-violet-300.to-emerald-300,
+html.light .bg-gradient-to-r.from-cyan-600.via-violet-600.to-emerald-600,
+html.light .bg-gradient-to-r.from-\[\#38BDF8\].via-\[\#A855F7\].to-\[\#34D399\] {
+  background-image: linear-gradient(to right, #0284C7, #7C3AED, #059669) !important;
+}
+
+/* Modal containers in light mode */
+html.light [role="dialog"] > div {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.18) !important;
+}
+
+html.light [role="dialog"] > div > div.border-b {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light [role="dialog"] > div > div.border-t {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Safe area insets utilities */
+.pb-safe {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top, 0px));
+}
+
+.min-h-screen-dvh {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.h-screen-dvh {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.max-h-screen-dvh {
+  max-height: 92vh;
+  max-height: 92dvh;
+}
+
+/* Touch hit-area expansion for compact icons */
+.touch-target-expand {
+  position: relative;
+}
+.touch-target-expand::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 44px;
+  min-height: 44px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Global responsive scroll smoothing and touch handling */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Responsive typography and touch utilities */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
+  /* Prevent code blocks or wide tables from breaking viewport on mobile */
+  pre, code, table {
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  /* Touch target sizes on mobile - minimum 44px for standalone interactive controls */
+  button:not(.inline-btn),
+  [role="button"]:not(.inline-btn),
+  [role="tab"] {
+    min-height: 40px;
+    touch-action: manipulation;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee,
+  .animate-pulse,
+  .animate-ping,
+  .animate-bounce,
+  .animate-border-gradient {
+    animation: none !important;
+  }
+  * {
+    transform: none !important;
+    transition: none !important;
+  }
+}
