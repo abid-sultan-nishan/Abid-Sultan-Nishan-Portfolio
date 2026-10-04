@@ -80,14 +80,14 @@ export const SkillsSection: React.FC = () => {
             placeholder="Search competencies..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.04] text-base sm:text-xs font-mono text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#38BDF8] focus:shadow-[0_0_15px_rgba(56,189,248,0.2)] backdrop-blur-md transition-all shadow-xs"
+            className="w-full pl-9 pr-3.5 py-2.5 min-h-[44px] rounded-xl border border-slate-200 dark:border-white/[0.08] bg-white dark:bg-[#070B14]/80 text-base sm:text-xs font-mono text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-400 focus:outline-none focus:border-[#38BDF8] focus:shadow-[0_0_15px_rgba(56,189,248,0.2)] backdrop-blur-md transition-all shadow-xs"
           />
         </div>
       </ScrollReveal>
 
       {/* Filter Tabs for Streamlined Browsing (Reduces Cognitive Overload) */}
       <ScrollReveal direction="up" distance={15} className="mb-8">
-        <div className="flex items-center gap-1.5 p-1.5 bg-slate-100/80 dark:bg-white/[0.03] rounded-2xl border border-slate-200 dark:border-white/10 backdrop-blur-xl overflow-x-auto scrollbar-none max-w-full">
+        <div className="flex items-center gap-1.5 p-1.5 bg-slate-100/80 dark:bg-[#070B14]/80 rounded-2xl border border-slate-200 dark:border-white/[0.08] backdrop-blur-xl overflow-x-auto scrollbar-none max-w-full">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat;
             return (
@@ -96,7 +96,7 @@ export const SkillsSection: React.FC = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3.5 sm:px-4 py-2 min-h-[40px] text-xs font-mono font-medium rounded-xl transition-all whitespace-nowrap cursor-pointer active:scale-[0.98] ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#A855F7] to-[#7C3AED] text-white shadow-md shadow-[#A855F7]/30 font-semibold'
+                    ? 'bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 text-slate-950 font-bold shadow-[0_0_16px_rgba(56,189,248,0.35)]'
                     : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/[0.05]'
                 }`}
               >
@@ -136,10 +136,10 @@ export const SkillsSection: React.FC = () => {
               delay={(idx % 3) * 0.08}
               className="h-full container-card"
             >
-              <div className="card-premium group flex flex-col justify-between h-full bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
+              <div className="card-premium group flex flex-col justify-between h-full rounded-[22px] overflow-hidden">
                 {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
                 {cat.cardImage && (
-                  <div className="relative w-full aspect-[16/9] max-h-44 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
+                  <div className="relative w-full aspect-[16/9] max-h-44 overflow-hidden rounded-t-[21px] border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={cat.cardImage}
                       alt={`${cat.category} 3D isometric conceptual vector visualization`}

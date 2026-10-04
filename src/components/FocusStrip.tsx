@@ -20,17 +20,17 @@ export const FocusStrip: React.FC = () => {
     <ScrollReveal direction="up" distance={15} duration={0.6}>
       <div
         id="focus-strip"
-        className="border-y border-slate-200/90 dark:border-white/10 bg-white/70 dark:bg-[#0B0F17]/85 backdrop-blur-xl py-3.5 relative overflow-hidden group select-none transition-colors duration-200"
+        className="border-y border-slate-200/90 dark:border-white/[0.08] bg-white/70 dark:bg-[#070B14]/85 backdrop-blur-xl py-3.5 relative overflow-hidden group select-none transition-colors duration-200"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* Edge gradient masks for smooth fade */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white dark:from-[#0B0F17] to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white dark:from-[#0B0F17] to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-r from-white dark:from-[#060911] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-white dark:from-[#060911] to-transparent z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-4">
           {/* Fixed Title Tag */}
-          <div className="flex items-center gap-2 font-mono text-xs text-[#38BDF8] font-semibold uppercase tracking-wider shrink-0 pr-4 border-r border-slate-200 dark:border-white/10 z-20 bg-white/90 dark:bg-[#0B0F17]/90 backdrop-blur-md">
+          <div className="flex items-center gap-2 font-mono text-xs text-[#38BDF8] font-semibold uppercase tracking-wider shrink-0 pr-4 border-r border-slate-200 dark:border-white/[0.08] z-20 bg-white/90 dark:bg-[#070B14]/90 backdrop-blur-md">
             <Terminal className="w-3.5 h-3.5 text-[#38BDF8] animate-pulse" />
             <span className="hidden sm:inline">Exploration Core</span>
           </div>

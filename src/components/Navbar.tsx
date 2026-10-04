@@ -70,9 +70,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <>
-      {/* Top scroll progress line with cyan to purple gradient */}
+      {/* Top scroll progress line with refined cyan-indigo-violet gradient */}
       <div
-        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#34D399] z-50 transition-all duration-150 ease-out shadow-[0_0_8px_rgba(168,85,247,0.6)]"
+        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-[#38BDF8] via-[#818CF8] to-[#A855F7] z-50 transition-all duration-150 ease-out shadow-[0_0_10px_rgba(56,189,248,0.5)]"
         style={{ width: `${scrollProgress}%` }}
         aria-hidden="true"
       />
@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/85 dark:bg-[#0B0F17]/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/10 shadow-lg shadow-black/10 dark:shadow-black/40'
+            ? 'bg-white/90 dark:bg-[#060911]/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/[0.08] shadow-lg shadow-black/10 dark:shadow-black/40'
             : 'bg-transparent border-b border-transparent'
         }`}
       >
@@ -92,7 +92,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={(e) => handleNavClick(e, '#home')}
               className="flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#38BDF8] rounded-xl p-1 min-w-0"
             >
-              <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#A855F7]/20 via-[#38BDF8]/20 to-transparent text-[#38BDF8] font-mono font-bold text-xs border border-white/15 shadow-inner group-hover:border-[#38BDF8]/60 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all duration-300">
+              <div className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#A855F7]/20 via-[#38BDF8]/20 to-transparent text-[#38BDF8] font-bold text-xs border border-white/15 shadow-inner group-hover:border-[#38BDF8]/60 group-hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] transition-all duration-300">
                 {portfolioData.personal.monogram}
               </div>
               <span className="font-display font-semibold tracking-tight text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 group-hover:text-[#A855F7] dark:group-hover:text-white transition-colors truncate max-w-[140px] xs:max-w-[200px] sm:max-w-none">
@@ -101,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
 
             {/* Micro-Animated Status Tag */}
-            <div className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/10 text-[11px] font-mono text-slate-600 dark:text-[#94A3B8] backdrop-blur-sm shadow-xs">
+            <div className="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] dark:bg-white/[0.03] border border-slate-200/80 dark:border-white/10 text-[11px] font-medium text-slate-600 dark:text-[#94A3B8] backdrop-blur-sm shadow-xs">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38BDF8] opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#38BDF8]" />
@@ -112,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Zone 2: Navigation Links (Clean text links with active glow line) */}
           <nav
-            className="hidden lg:flex items-center gap-6 text-xs font-medium text-slate-600 dark:text-[#94A3B8]"
+            className="hidden lg:flex items-center gap-6 text-[13px] font-medium text-slate-600 dark:text-[#94A3B8]"
             aria-label="Main Navigation"
           >
             {navLinks.map((link) => {

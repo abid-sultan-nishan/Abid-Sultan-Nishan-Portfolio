@@ -94,10 +94,10 @@ export const TokenizerPlayground: React.FC = () => {
   }, [inputText, selectedTokenizer]);
 
   return (
-    <div className="card-premium p-6 sm:p-7">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-white/10 pb-4 mb-5">
+    <div className="card-premium p-6 sm:p-7 rounded-[22px]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-white/[0.08] pb-4 mb-5">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] text-[#38BDF8] border border-slate-200 dark:border-white/10 shadow-inner">
+          <div className="p-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] text-[#38BDF8] border border-slate-200 dark:border-white/[0.08] shadow-inner">
             <Terminal className="w-4 h-4 text-[#38BDF8]" />
           </div>
           <div>
@@ -114,12 +114,12 @@ export const TokenizerPlayground: React.FC = () => {
         </div>
 
         {/* Tokenizer selection controls */}
-        <div className="flex items-center gap-1 bg-white/80 dark:bg-white/[0.03] p-1.5 rounded-2xl border border-slate-200 dark:border-white/10 self-start sm:self-auto overflow-x-auto max-w-full">
+        <div className="flex items-center gap-1 bg-white/80 dark:bg-[#070B14]/80 p-1.5 rounded-2xl border border-slate-200 dark:border-white/[0.08] self-start sm:self-auto overflow-x-auto max-w-full">
           <button
             onClick={() => setSelectedTokenizer('indic_bpe')}
             className={`px-3 py-2 min-h-[38px] text-xs font-mono font-medium rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-[0.98] touch-manipulation ${
               selectedTokenizer === 'indic_bpe'
-                ? 'bg-gradient-to-r from-[#A855F7] to-[#7C3AED] text-white shadow-md shadow-[#A855F7]/30'
+                ? 'bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 text-slate-950 font-bold shadow-[0_0_16px_rgba(56,189,248,0.35)]'
                 : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white'
             }`}
           >

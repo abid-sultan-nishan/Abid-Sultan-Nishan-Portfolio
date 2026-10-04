@@ -21,7 +21,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onSele
   const cardInnerContent = (
     <div className="relative flex flex-col justify-between h-full">
       {/* 3D Isometric Network Nodes & Data Flows Illustration */}
-      <div className="relative w-full h-44 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
+      <div className="relative w-full h-44 overflow-hidden rounded-t-[21px] border-b border-slate-800/80 bg-[#070B12]">
         <ResponsiveImage
           src={cardIllustration}
           webpSrc={cardConfig.primaryImage}
@@ -146,8 +146,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onSele
 
   if (isFeatured) {
     return (
-      <div className="card-featured-glow container-card group h-full transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)]">
-        <div className="card-inner-elevated h-full bg-[#0b101d]/90 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden">
+      <div className="card-featured-glow container-card group h-full rounded-[26px]">
+        <div className="card-inner-elevated h-full rounded-[25px] overflow-hidden">
           {cardInnerContent}
         </div>
       </div>
@@ -155,7 +155,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, onSele
   }
 
   return (
-    <div className="card-premium container-card group flex flex-col justify-between h-full bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
+    <div className="card-premium container-card group flex flex-col justify-between h-full rounded-[22px] overflow-hidden">
       {cardInnerContent}
     </div>
   );

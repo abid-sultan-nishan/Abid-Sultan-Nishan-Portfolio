@@ -31,7 +31,7 @@ export default function App() {
     root.classList.add('dark');
     root.classList.remove('light');
     localStorage.setItem('asn-theme', 'dark');
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#0B0F17');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#060911');
   }, []);
 
   return (

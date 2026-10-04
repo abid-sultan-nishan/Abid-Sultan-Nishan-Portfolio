@@ -135,7 +135,7 @@ ${portfolioData.academicPublications.map((p) => `- "${p.title}" - ${p.venue} (${
         onClick={(e) => e.stopPropagation()}
       >
         {/* Action Header */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-3.5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50/95 dark:bg-[#0B0F17]/95">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-3.5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-white/[0.08] bg-slate-50/95 dark:bg-[#070B14]/95">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#A855F7]/20 to-[#38BDF8]/20 text-[#38BDF8] font-mono font-bold text-xs sm:text-sm border border-white/10">
               ASN
@@ -187,7 +187,7 @@ ${portfolioData.academicPublications.map((p) => `- "${p.title}" - ${p.venue} (${
         </div>
 
         {/* Scrollable CV Document */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-10 space-y-8 bg-slate-50 dark:bg-[#0B0F17] text-slate-800 dark:text-slate-200 print:bg-white print:text-black">
+        <div className="flex-1 overflow-y-auto p-5 sm:p-10 space-y-8 bg-slate-50 dark:bg-[#070B14] text-slate-800 dark:text-slate-200 print:bg-white print:text-black">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 border-b border-slate-200 dark:border-white/10 pb-6 print:border-black">
             <div>
@@ -432,7 +432,7 @@ ${portfolioData.academicPublications.map((p) => `- "${p.title}" - ${p.venue} (${
         </div>
 
         {/* Footer info bar */}
-        <div className="px-5 sm:px-6 py-4 border-t border-slate-200 dark:border-white/10 bg-slate-50/95 dark:bg-[#0B0F17]/95 text-xs text-slate-500 dark:text-[#94A3B8] font-mono flex items-center justify-between">
+        <div className="px-5 sm:px-6 py-4 border-t border-slate-200 dark:border-white/[0.08] bg-slate-50/95 dark:bg-[#070B14]/95 text-xs text-slate-500 dark:text-[#94A3B8] font-mono flex items-center justify-between">
           <span>Official CV draft · Updated 2026</span>
           <button
             onClick={onClose}

@@ -122,10 +122,10 @@ export const PublicationsSection: React.FC = () => {
               delay={(idx % 2) * 0.08}
               className="h-full container-card"
             >
-              <div className="card-premium relative flex flex-col justify-between group h-full space-y-4 bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
+              <div className="card-premium relative flex flex-col justify-between group h-full space-y-4 rounded-[22px] overflow-hidden">
                 {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
                 {pub.cardImage && (
-                  <div className="relative w-full aspect-[16/9] max-h-48 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
+                  <div className="relative w-full aspect-[16/9] max-h-48 overflow-hidden rounded-t-[21px] border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={pub.cardImage}
                       alt={`${pub.title} 3D isometric conceptual vector visualization`}
@@ -240,11 +240,11 @@ export const PublicationsSection: React.FC = () => {
             >
               <div
                 onClick={() => setSelectedNote(note)}
-                className="card-premium relative flex flex-col justify-between cursor-pointer group h-full space-y-4 bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50 active:scale-[0.98]"
+                className="card-premium relative flex flex-col justify-between cursor-pointer group h-full space-y-4 rounded-[22px] overflow-hidden active:scale-[0.98]"
               >
                 {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
                 {note.cardImage && (
-                  <div className="relative w-full aspect-[16/9] max-h-40 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
+                  <div className="relative w-full aspect-[16/9] max-h-40 overflow-hidden rounded-t-[21px] border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={note.cardImage}
                       alt={`${note.title} 3D isometric conceptual vector visualization`}

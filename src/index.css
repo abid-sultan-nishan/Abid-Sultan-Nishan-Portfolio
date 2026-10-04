@@ -2,23 +2,30 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+}
+
 @layer base {
   :root, html.dark {
-    --bg-main: #0B0F17;
-    --surface-elevated: #111827;
-    --surface-secondary: #0F172A;
-    --surface-input: #0B0F17;
+    --bg-main: #060911;
+    --surface-elevated: #0B101D;
+    --surface-secondary: #0E1526;
+    --surface-input: #080D1A;
     --text-primary: #F8FAFC;
     --text-secondary: #E2E8F0;
-    --text-muted: #CBD5E1;
+    --text-muted: #94A3B8;
     --accent-violet: #A855F7;
-    --accent-purple: #A855F7;
+    --accent-purple: #9333EA;
     --accent-cyan: #38BDF8;
-    --border-subtle: rgba(255, 255, 255, 0.12);
-    --border-strong: rgba(255, 255, 255, 0.20);
-    --border-glass: rgba(255, 255, 255, 0.14);
-    --card-shadow: 0 12px 36px -5px rgba(0, 0, 0, 0.65);
-    --badge-bg: rgba(17, 24, 39, 0.85);
+    --accent-blue: #3B82F6;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.16);
+    --border-glass: rgba(56, 189, 248, 0.12);
+    --card-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.75);
+    --badge-bg: rgba(13, 20, 36, 0.85);
 
     /* Fluid Typography System using clamp(min, preferred, max) */
     --font-display-hero: clamp(2rem, 1.35rem + 3.2vw, 3.85rem);
@@ -68,7 +75,15 @@
 
   body {
     font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    letter-spacing: -0.012em;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-variant-numeric: normal;
     background-color: var(--bg-main);
+    background-image: 
+      radial-gradient(1100px 550px at 50% -80px, rgba(14, 34, 72, 0.35), transparent 70%),
+      radial-gradient(800px 500px at 90% 25%, rgba(28, 16, 52, 0.2), transparent 60%),
+      radial-gradient(700px 400px at 10% 75%, rgba(12, 28, 60, 0.2), transparent 60%);
+    background-attachment: fixed;
     color: var(--text-primary);
     transition: background-color 0.25s ease, color 0.25s ease;
     -webkit-font-smoothing: antialiased;
@@ -83,15 +98,18 @@
   }
 
   code, pre, .font-mono {
-    font-family: 'Fira Code', 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    font-feature-settings: "liga" 1, "calt" 1;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-feature-settings: "liga" 1, "calt" 1, "zero" 1;
+    font-variant-numeric: tabular-nums;
     tab-size: 2;
   }
 
-  h1, h2, h3, .font-display {
-    font-family: 'Space Grotesk', 'Plus Jakarta Sans', 'Inter', sans-serif;
-    letter-spacing: -0.025em;
-    line-height: 1.18;
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.028em;
+    line-height: 1.16;
+    text-wrap: balance;
+    font-feature-settings: "ss01", "ss02", "cv02", "cv11";
   }
 
   /* Interactive Elements Touch Optimization - Eliminates 300ms mobile tap delay */
@@ -127,6 +145,20 @@
     height: auto;
     content-visibility: auto;
   }
+}
+
+/* Executive Typography Family Classes */
+.font-display {
+  font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif !important;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, monospace !important;
+  font-variant-numeric: tabular-nums;
 }
 
 /* Fluid Typography Helper Classes */
@@ -232,88 +264,121 @@ html.light ::-webkit-scrollbar-track {
   will-change: transform, opacity;
 }
 
-/* Executive Glassmorphism & Ultra-Premium Card Utilities */
+/* Executive Glassmorphism & 3D Ultra-Premium Card Utilities */
 .card-premium {
   position: relative;
-  background: rgba(11, 16, 29, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(30, 41, 59, 0.8);
-  border-radius: 1rem;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.3s ease,
-              background-color 0.3s ease;
+  background: linear-gradient(168deg, rgba(14, 22, 42, 0.78) 0%, rgba(7, 11, 24, 0.90) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  border-radius: 1.375rem; /* Sculpted 22px curvature */
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.09) inset, /* 3D top specular edge */
+    0 -1px 1px 0 rgba(0, 0, 0, 0.6) inset,        /* 3D bottom shadow bevel */
+    0 8px 24px -4px rgba(0, 0, 0, 0.55),         /* contact shadow */
+    0 18px 40px -8px rgba(0, 0, 0, 0.45);        /* 3D ambient grounding shadow */
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              background 0.35s ease !important;
   transform: translate3d(0, 0, 0);
+  perspective: 1000px;
   backface-visibility: hidden;
-  will-change: transform, box-shadow;
+  will-change: transform, box-shadow, background-color, border-color;
   overflow: hidden;
 }
 
 /* Fallback for browsers without backdrop-filter support */
-@supports not ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
+@supports not ((-webkit-backdrop-filter: blur(16px)) or (backdrop-filter: blur(16px))) {
   .card-premium {
-    background: rgba(11, 16, 29, 0.96) !important;
+    background: rgba(8, 13, 26, 0.98) !important;
   }
 }
 
 html.light .card-premium {
-  background: #FFFFFF !important;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%) !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   border: 1px solid #E2E8F0 !important;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05) !important;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s ease !important;
+  border-radius: 1.375rem;
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 4px 12px -2px rgba(15, 23, 42, 0.05),
+    0 12px 24px -4px rgba(15, 23, 42, 0.06) !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              background 0.35s ease !important;
 }
 
 html.light .card-premium::before {
   display: none !important;
 }
 
+/* 3D Specular Beam on top edge */
 .card-premium::before {
   content: '';
   position: absolute;
   inset-inline: 0;
   top: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.3) 30%, rgba(168, 85, 247, 0.4) 70%, transparent 100%);
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.45) 25%, rgba(168, 85, 247, 0.5) 75%, transparent 100%);
   pointer-events: none;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
+  opacity: 0.7;
+  transition: opacity 0.35s ease, height 0.35s ease;
+  z-index: 2;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .card-premium:hover {
-    background: rgba(13, 19, 34, 0.85);
-    border-color: rgba(6, 182, 212, 0.5);
-    transform: translate3d(0, -8px, 0);
-    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.15);
+    background: linear-gradient(168deg, rgba(20, 32, 64, 0.94) 0%, rgba(10, 16, 36, 0.98) 100%) !important; /* Luminous deep 3D inner midnight-blue glow */
+    border-color: rgba(56, 189, 248, 0.6) !important; /* Glowing cyan chamfered border */
+    transform: translate3d(0, -8px, 0) scale3d(1.012, 1.012, 1) !important; /* Smooth 3D physical lift */
+    box-shadow: 
+      0 1px 2px 0 rgba(255, 255, 255, 0.28) inset, /* illuminated top chamfer */
+      0 0 30px 0 rgba(56, 189, 248, 0.16) inset,    /* interior luminous bounce */
+      0 22px 48px -10px rgba(0, 0, 0, 0.75),        /* deep 3D projection shadow */
+      0 0 35px 2px rgba(56, 189, 248, 0.24) !important; /* atmospheric cyan aura */
   }
 
   html.light .card-premium:hover {
-    background: #FFFFFF !important;
-    border-color: #CBD5E1 !important;
-    transform: translate3d(0, -8px, 0) !important;
-    box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.08) !important;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0F9FF 100%) !important;
+    border-color: #38BDF8 !important;
+    transform: translate3d(0, -8px, 0) scale3d(1.012, 1.012, 1) !important;
+    box-shadow: 
+      0 1px 2px 0 rgba(255, 255, 255, 1) inset,
+      0 20px 35px -8px rgba(56, 189, 248, 0.2),
+      0 0 25px rgba(56, 189, 248, 0.15) !important;
   }
 
   .card-premium:hover::before {
     opacity: 1;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.95) 25%, rgba(168, 85, 247, 0.85) 75%, transparent 100%);
+  }
+
+  /* Modals using card-premium remain anchored without hover transforms */
+  [role="dialog"] .card-premium,
+  [role="dialog"] .card-premium:hover,
+  .fixed .card-premium,
+  .fixed .card-premium:hover {
+    transform: none !important;
   }
 }
 
 .card-featured-glow {
   position: relative;
-  border-radius: 1.5rem;
+  border-radius: 1.625rem; /* 26px outer */
   padding: 1px;
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.7) 0%, rgba(56, 189, 248, 0.6) 50%, rgba(129, 140, 248, 0.5) 100%);
-  box-shadow: 0 0 30px -5px rgba(168, 85, 247, 0.25), 0 20px 40px -10px rgba(0, 0, 0, 0.6);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.75) 0%, rgba(56, 189, 248, 0.7) 50%, rgba(129, 140, 248, 0.6) 100%);
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 0 35px -5px rgba(168, 85, 247, 0.3),
+    0 20px 45px -10px rgba(0, 0, 0, 0.7);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translate3d(0, 0, 0);
+  perspective: 1000px;
   backface-visibility: hidden;
   will-change: transform, box-shadow;
 }
@@ -324,20 +389,35 @@ html.light .card-featured-glow {
 }
 
 .card-featured-glow:hover {
-  box-shadow: 0 0 45px -2px rgba(168, 85, 247, 0.45), 0 0 30px 0 rgba(56, 189, 248, 0.35), 0 25px 50px -10px rgba(0, 0, 0, 0.75);
-  transform: translateY(-4px);
+  box-shadow: 
+    0 1px 2px 0 rgba(255, 255, 255, 0.25) inset,
+    0 24px 50px -10px rgba(0, 0, 0, 0.8),
+    0 0 45px 2px rgba(168, 85, 247, 0.5),
+    0 0 30px rgba(56, 189, 248, 0.3);
+  transform: translate3d(0, -8px, 0) scale3d(1.012, 1.012, 1);
 }
 
 html.light .card-featured-glow:hover {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 0 25px -2px rgba(2, 132, 199, 0.15), 0 0 20px -2px rgba(124, 58, 237, 0.15) !important;
-  transform: translateY(-4px) !important;
+  transform: translate3d(0, -8px, 0) scale3d(1.012, 1.012, 1) !important;
 }
 
 .card-inner-elevated {
-  background: rgba(14, 21, 37, 0.85);
+  background: linear-gradient(168deg, rgba(16, 24, 46, 0.9) 0%, rgba(9, 14, 30, 0.95) 100%);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-radius: calc(1.5rem - 1px);
+  border-radius: calc(1.625rem - 1px);
+  box-shadow: 
+    0 1px 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 -1px 1px 0 rgba(0, 0, 0, 0.6) inset;
+  transition: background 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
+}
+
+.card-featured-glow:hover .card-inner-elevated {
+  background: linear-gradient(168deg, rgba(24, 38, 76, 0.96) 0%, rgba(12, 20, 44, 0.98) 100%) !important;
+  box-shadow: 
+    0 1px 2px 0 rgba(255, 255, 255, 0.3) inset,
+    0 0 35px rgba(56, 189, 248, 0.18) inset;
 }
 
 html.light .card-inner-elevated {
@@ -349,14 +429,16 @@ html.light .card-inner-elevated {
 
 .card-subtle {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: linear-gradient(168deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+  border-radius: 0.875rem;
+  box-shadow: 
+    0 1px 0 0 rgba(255, 255, 255, 0.07) inset,
+    0 4px 12px -2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.25s ease,
               background-color 0.25s ease;
   transform: translate3d(0, 0, 0);
@@ -364,7 +446,7 @@ html.light .card-inner-elevated {
   will-change: transform, box-shadow;
 }
 
-@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+@supports not ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
   .card-subtle {
     background: rgba(20, 28, 45, 0.95) !important;
   }
@@ -403,12 +485,15 @@ html.light .card-subtle {
 }
 
 .card-subtle:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(168deg, rgba(56, 189, 248, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(56, 189, 248, 0.38);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1), 0 12px 28px -6px rgba(0, 0, 0, 0.45), 0 0 22px -3px rgba(56, 189, 248, 0.22);
-  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 
+    0 1px 0 0 rgba(255, 255, 255, 0.18) inset,
+    0 12px 24px -6px rgba(0, 0, 0, 0.5),
+    0 0 20px -2px rgba(56, 189, 248, 0.25);
+  transform: translate3d(0, -4px, 0) scale3d(1.012, 1.012, 1);
 }
 
 html.light .card-subtle:hover {

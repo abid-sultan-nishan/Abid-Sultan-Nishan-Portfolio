@@ -136,10 +136,10 @@ export const ResearchSection: React.FC = () => {
               delay={(idx % 3) * 0.08}
               className="h-full container-card"
             >
-              <div className="card-premium group flex flex-col justify-between h-full bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
+              <div className="card-premium group flex flex-col justify-between h-full rounded-[22px] overflow-hidden">
                 {/* 4:3 Isometric Vector Illustration Header Banner */}
                 {interest.cardImage && (
-                  <div className="relative w-full aspect-[4/3] max-h-48 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12]">
+                  <div className="relative w-full aspect-[4/3] max-h-48 overflow-hidden rounded-t-[21px] border-b border-slate-800/80 bg-[#070B12]">
                     <ResponsiveImage
                       src={interest.cardImage}
                       alt={`${interest.title} 3D isometric conceptual illustration`}

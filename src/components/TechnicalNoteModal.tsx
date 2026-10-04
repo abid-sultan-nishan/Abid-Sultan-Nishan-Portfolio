@@ -105,7 +105,7 @@ ${note.takeaways}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-3.5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50/95 dark:bg-[#0B0F17]/95">
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-white/[0.08] bg-slate-50/95 dark:bg-[#070B14]/95">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl bg-[#38BDF8]/10 text-[#38BDF8] font-mono font-bold text-xs sm:text-sm border border-[#38BDF8]/20">
               <FileText className="w-4 h-4" />
@@ -219,7 +219,7 @@ ${note.takeaways}
         </div>
 
         {/* Modal Scroll Content */}
-        <div className="flex-1 overflow-y-auto p-5 sm:p-8 space-y-6 bg-slate-50 dark:bg-[#0B0F17]">
+        <div className="flex-1 overflow-y-auto p-5 sm:p-8 space-y-6 bg-slate-50 dark:bg-[#070B14]">
           {/* 3D Isometric Conceptual Vector Illustration Hero Banner */}
           {note.cardImage && (
             <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] max-h-52 overflow-hidden rounded-2xl border border-white/10 bg-[#070B12] shadow-xl">
@@ -401,7 +401,7 @@ ${note.takeaways}
         </div>
 
         {/* Modal Footer */}
-        <div className="px-5 sm:px-6 py-3.5 border-t border-slate-200 dark:border-white/10 bg-slate-50/95 dark:bg-[#0B0F17]/95 text-xs text-slate-600 dark:text-[#94A3B8] font-mono flex items-center justify-between">
+        <div className="px-5 sm:px-6 py-3.5 border-t border-slate-200 dark:border-white/[0.08] bg-slate-50/95 dark:bg-[#070B14]/95 text-xs text-slate-600 dark:text-[#94A3B8] font-mono flex items-center justify-between">
           <span>Technical Note ID: {note.id} · Verified Empirical Protocol</span>
           <button
             onClick={onClose}

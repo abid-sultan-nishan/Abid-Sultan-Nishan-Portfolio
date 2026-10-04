@@ -25,7 +25,7 @@ export const AboutSection: React.FC = () => {
     <section id="about" className="fluid-section-py px-3.5 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       {/* Section Header */}
       <ScrollReveal direction="up" distance={20} className="mb-10 sm:mb-12">
-        <div className="font-mono text-xs font-semibold text-[#A855F7] dark:text-[#C084FC] uppercase tracking-wider mb-2 flex items-center gap-2">
+        <div className="text-xs font-semibold text-[#A855F7] dark:text-[#C084FC] uppercase tracking-wider mb-2 flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[#A855F7]" />
           <span>Academic Profile &amp; Background</span>
         </div>
@@ -38,7 +38,7 @@ export const AboutSection: React.FC = () => {
         {/* Left Column: Narrative Biography & Motivation */}
         <div className="lg:col-span-7 space-y-6 container-card">
           <ScrollReveal direction="up" distance={24} duration={0.6}>
-            <div className="card-premium p-6 sm:p-9 space-y-5">
+            <div className="card-premium p-6 sm:p-9 space-y-5 rounded-[22px] overflow-hidden">
               <p className="fluid-body-lg text-slate-800 dark:text-slate-100 leading-relaxed font-normal">
                 {portfolioData.personal.bioParagraph1}
               </p>
@@ -46,8 +46,8 @@ export const AboutSection: React.FC = () => {
                 {portfolioData.personal.bioParagraph2}
               </p>
 
-              <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-mono text-slate-600 dark:text-slate-300">
-                <span className="flex items-center gap-1.5 text-[#38BDF8] font-medium">
+              <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs font-medium text-slate-600 dark:text-slate-300">
+                <span className="flex items-center gap-1.5 text-[#38BDF8] font-semibold">
                   <Binary className="w-4 h-4 text-[#38BDF8]" />
                   <span>Empirical &amp; Reproducible Methodology</span>
                 </span>
@@ -58,15 +58,15 @@ export const AboutSection: React.FC = () => {
 
           {/* Currently Exploring Card */}
           <ScrollReveal direction="up" distance={24} duration={0.6} delay={0.1}>
-            <div className="card-premium p-7 sm:p-8">
+            <div className="card-premium p-7 sm:p-8 rounded-[22px] overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-[#A855F7]" />
-                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100 font-mono">
+                  <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
                     Currently Exploring
                   </h3>
                 </div>
-                <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
                   Active Learning Topics
                 </span>
               </div>
@@ -77,9 +77,9 @@ export const AboutSection: React.FC = () => {
               >
                 {portfolioData.currentlyExploring.map((topic, idx) => (
                   <StaggerItem key={idx} direction="up" distance={16} delay={idx * 0.04}>
-                    <div className="card-subtle flex items-center gap-2.5 px-3.5 py-3 text-xs font-mono text-slate-800 dark:text-slate-200 group cursor-default">
+                    <div className="card-subtle flex items-center gap-2.5 px-3.5 py-3 text-xs font-medium text-slate-800 dark:text-slate-200 group cursor-default">
                       <span className="h-1.5 w-1.5 rounded-full bg-[#38BDF8] group-hover:scale-125 transition-transform shrink-0" />
-                      <span className="truncate font-medium">{topic}</span>
+                      <span className="truncate font-semibold">{topic}</span>
                     </div>
                   </StaggerItem>
                 ))}
@@ -91,7 +91,7 @@ export const AboutSection: React.FC = () => {
         {/* Right Column: Structured Editable Status & Academic Info */}
         <div className="lg:col-span-5 space-y-5">
           <ScrollReveal direction="up" distance={24} duration={0.6} delay={0.15}>
-            <div className="card-premium p-7 sm:p-8 space-y-5">
+            <div className="card-premium p-7 sm:p-8 space-y-5 rounded-[22px] overflow-hidden">
               <div className="flex items-center gap-4 border-b border-slate-200 dark:border-white/10 pb-4">
                 {/* Profile Avatar Container with Glowing Border & Square Aspect Ratio */}
                 <div className="relative w-14 h-14 sm:w-16 sm:h-16 aspect-square shrink-0 group">
@@ -134,10 +134,10 @@ export const AboutSection: React.FC = () => {
                   <h3 className="font-display font-semibold text-slate-900 dark:text-white text-base">
                     {portfolioData.personal.name}
                   </h3>
-                  <div className="text-xs font-mono text-[#38BDF8] font-medium">
+                  <div className="text-xs text-[#38BDF8] font-semibold">
                     {portfolioData.personal.title}
                   </div>
-                  <div className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">
                     Uttara University · 2024–2027
                   </div>
                 </div>
@@ -147,7 +147,7 @@ export const AboutSection: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <GraduationCap className="w-4 h-4 text-[#A855F7] mt-1 shrink-0" />
                   <div>
-                    <div className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">Current Status</div>
+                    <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Current Status</div>
                     <div className="font-medium text-slate-900 dark:text-slate-100 mt-0.5">
                       {portfolioData.personal.educationStatus}
                     </div>
@@ -160,7 +160,7 @@ export const AboutSection: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#38BDF8] mt-1 shrink-0" />
                   <div>
-                    <div className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">Location</div>
+                    <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Location</div>
                     <div className="font-medium text-slate-900 dark:text-slate-100 mt-0.5">
                       {portfolioData.personal.location}
                     </div>
@@ -170,7 +170,7 @@ export const AboutSection: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <Compass className="w-4 h-4 text-[#A855F7] mt-1 shrink-0" />
                   <div>
-                    <div className="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium">Research Direction</div>
+                    <div className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Research Direction</div>
                     <div className="font-medium text-slate-900 dark:text-slate-100 mt-0.5">
                       NLP, LLMs &amp; Deep Learning
                     </div>
@@ -183,10 +183,10 @@ export const AboutSection: React.FC = () => {
                 <div className="flex items-start gap-3 pt-2 border-t border-slate-200 dark:border-white/10">
                   <Users className="w-4 h-4 text-[#34D399] mt-1 shrink-0" />
                   <div>
-                    <div className="text-xs font-mono text-emerald-600 dark:text-[#34D399] font-medium">
+                    <div className="text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-[#34D399]">
                       Collaboration Status
                     </div>
-                    <div className="text-xs text-slate-800 dark:text-slate-200 mt-1.5 font-mono leading-relaxed bg-slate-50 dark:bg-white/[0.03] p-3.5 rounded-xl border border-slate-200 dark:border-white/10">
+                    <div className="text-xs text-slate-800 dark:text-slate-200 mt-1.5 leading-relaxed bg-slate-50 dark:bg-white/[0.03] p-3.5 rounded-xl border border-slate-200 dark:border-white/10">
                       {portfolioData.personal.collaborationStatus}
                     </div>
                   </div>
@@ -197,9 +197,12 @@ export const AboutSection: React.FC = () => {
 
           {/* Quick Monogram Research Bio Badge */}
           <ScrollReveal direction="up" distance={18} duration={0.5} delay={0.25}>
-            <div className="p-4.5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.02] text-xs font-mono text-slate-600 dark:text-slate-300 flex items-center justify-between shadow-sm backdrop-blur-md">
-              <span className="text-slate-900 dark:text-slate-200 font-semibold">ASN Research Index</span>
-              <span className="text-[#38BDF8] font-medium">Uttara, Dhaka · BD</span>
+            <div className="p-4 rounded-2xl border border-slate-800/80 bg-[#0b101d]/70 hover:bg-[#101932]/90 backdrop-blur-md text-xs font-medium text-slate-300 flex items-center justify-between shadow-sm transition-all duration-300 hover:border-cyan-500/50 hover:shadow-[0_8px_24px_rgba(59,130,246,0.15)]">
+              <span className="text-slate-200 font-semibold flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                ASN Research Index
+              </span>
+              <span className="text-[#38BDF8] font-semibold">Uttara, Dhaka · BD</span>
             </div>
           </ScrollReveal>
         </div>

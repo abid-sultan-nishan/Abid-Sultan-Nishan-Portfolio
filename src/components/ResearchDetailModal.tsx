@@ -78,7 +78,7 @@ export const ResearchDetailModal: React.FC<ResearchDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="flex items-center justify-between px-3.5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-white/10 bg-slate-50/95 dark:bg-[#0B0F17]/95">
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-3.5 border-b border-slate-200 dark:border-white/[0.08] bg-slate-50/95 dark:bg-[#070B14]/95">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-xl bg-[#A855F7]/15 text-[#A855F7] font-mono font-bold text-xs sm:text-sm border border-[#A855F7]/30">
               <Sparkles className="w-4 h-4 text-[#38BDF8]" />

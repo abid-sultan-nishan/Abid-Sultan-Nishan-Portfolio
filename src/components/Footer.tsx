@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#0B0F17] py-12 px-4 sm:px-6 lg:px-8 text-xs font-mono transition-colors duration-200">
+    <footer className="border-t border-slate-200 dark:border-white/[0.08] bg-slate-50 dark:bg-[#060911] py-12 px-4 sm:px-6 lg:px-8 text-xs font-mono transition-colors duration-200">
       <ScrollReveal direction="up" distance={16} duration={0.6}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand identity */}

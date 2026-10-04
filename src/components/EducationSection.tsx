@@ -97,10 +97,10 @@ export const EducationSection: React.FC = () => {
         <div className="relative pl-6 sm:pl-8 border-l-2 border-[#38BDF8] ml-2 sm:ml-4">
           <div className="absolute -left-[9px] top-2 h-4 w-4 rounded-full bg-white dark:bg-[#0B0F17] border-2 border-[#38BDF8] shadow-[0_0_12px_rgba(56,189,248,0.7)]" />
 
-          <div className="card-premium container-card group relative p-6 sm:p-7 space-y-4 bg-[#0b101d]/70 backdrop-blur-md border border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_30px_rgba(59,130,246,0.15)] hover:border-cyan-500/50">
+          <div className="card-premium container-card group relative p-6 sm:p-7 space-y-4 rounded-[22px] overflow-hidden">
             {/* 3D Isometric Conceptual Vector Illustration Card Banner */}
             {edu.cardImage && (
-              <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] max-h-48 overflow-hidden rounded-t-xl border-b border-slate-800/80 bg-[#070B12] -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 mb-5">
+              <div className="relative w-full aspect-[21/9] sm:aspect-[24/9] max-h-48 overflow-hidden rounded-t-[21px] border-b border-slate-800/80 bg-[#070B12] -mx-6 -mt-6 sm:-mx-7 sm:-mt-7 mb-5">
                 <ResponsiveImage
                   src={edu.cardImage}
                   alt={`${edu.degree} 3D isometric conceptual illustration`}
@@ -287,8 +287,8 @@ export const EducationSection: React.FC = () => {
             return (
               <div
                 key={m.id}
-                className={`card-premium p-5 sm:p-6 transition-all duration-200 ${
-                  isExpanded ? 'ring-1 ring-[#0284C7]/20 dark:ring-[#38BDF8]/20 shadow-md' : 'hover:border-slate-300 dark:hover:border-white/20'
+                className={`card-premium p-5 sm:p-6 rounded-[20px] overflow-hidden ${
+                  isExpanded ? 'ring-1 ring-[#0284C7]/20 dark:ring-[#38BDF8]/20 shadow-md' : ''
                 }`}
               >
                 <div

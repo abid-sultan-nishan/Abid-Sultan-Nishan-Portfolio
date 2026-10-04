@@ -12,6 +12,7 @@ export interface PersonalInfo {
   title: string;
   tagline: string;
   headline: string;
+  valueProposition?: string;
   bioParagraph1: string;
   bioParagraph2: string;
   educationStatus: string;
@@ -186,6 +187,8 @@ export const portfolioData = {
     title: 'NLP, LLM & Deep Learning Researcher',
     tagline: 'NLP, LLM & DEEP LEARNING RESEARCHER',
     headline: 'Exploring intelligence through language, learning, and deep neural systems.',
+    valueProposition:
+      'CSE Undergraduate & AI/NLP Researcher specializing in Large Language Models, Fine-tuning, and Intelligent Neural Architectures.',
     bioParagraph1:
       'I am a CSE undergraduate at Uttara University with a growing focus on Natural Language Processing, Large Language Models, and Deep Learning. I am interested in understanding how intelligent systems process language, learn from data, and solve practical problems. My current direction combines research, experimentation, and applied machine learning.',
     bioParagraph2:

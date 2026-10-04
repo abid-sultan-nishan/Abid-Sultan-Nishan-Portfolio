@@ -72,11 +72,11 @@ export const BackgroundCanvas: React.FC<BackgroundCanvasProps> = ({ isDark = tru
 
     // Color palettes
     const colorsDark = {
-      attention: '#A855F7', // Purple
-      hidden: '#38BDF8', // Cyan
-      latent: '#818CF8', // Indigo
-      hub: '#38BDF8', // Cyan
-      gridCross: 'rgba(255, 255, 255, 0.06)',
+      attention: 'rgba(168, 85, 247, 0.75)', // Purple
+      hidden: 'rgba(56, 189, 248, 0.85)', // Cyan
+      latent: 'rgba(129, 140, 248, 0.75)', // Indigo
+      hub: 'rgba(56, 189, 248, 0.95)', // Cyan
+      gridCross: 'rgba(255, 255, 255, 0.035)',
     };
 
     const colorsLight = {

@@ -73,7 +73,7 @@ export const FloatingQuickNav: React.FC<FloatingQuickNavProps> = ({ onOpenResume
           }}
         >
           {/* Current Section Badge */}
-          <div className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-[#0B0F17]/90 border border-slate-200 dark:border-white/10 text-xs font-mono text-slate-700 dark:text-[#94A3B8] shadow-2xl backdrop-blur-xl">
+          <div className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 dark:bg-[#070B14]/90 border border-slate-200 dark:border-white/[0.08] text-xs font-mono text-slate-700 dark:text-[#94A3B8] shadow-2xl backdrop-blur-xl">
             <span className="flex h-2 w-2 rounded-full bg-[#38BDF8] animate-pulse" />
             <span className="text-slate-500 dark:text-slate-400">Current:</span>
             <span className="text-slate-900 dark:text-white font-medium">{activeSection}</span>
@@ -83,7 +83,7 @@ export const FloatingQuickNav: React.FC<FloatingQuickNavProps> = ({ onOpenResume
           <button
             onClick={handleCopyEmail}
             title="Copy Email Address"
-            className="min-h-[44px] min-w-[44px] p-2.5 rounded-full bg-white/90 dark:bg-[#0B0F17]/90 hover:bg-slate-100 dark:hover:bg-white/[0.08] text-slate-700 dark:text-[#94A3B8] hover:text-[#38BDF8] dark:hover:text-[#38BDF8] border border-slate-200 dark:border-white/10 shadow-lg backdrop-blur-xl transition-all hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] flex items-center justify-center touch-manipulation"
+            className="min-h-[44px] min-w-[44px] p-2.5 rounded-full bg-white/90 dark:bg-[#070B14]/90 hover:bg-slate-100 dark:hover:bg-white/[0.08] text-slate-700 dark:text-[#94A3B8] hover:text-[#38BDF8] dark:hover:text-[#38BDF8] border border-slate-200 dark:border-white/[0.08] shadow-lg backdrop-blur-xl transition-all hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] flex items-center justify-center touch-manipulation"
             aria-label="Copy email"
           >
             <Mail className="w-4 h-4" />
@@ -93,9 +93,9 @@ export const FloatingQuickNav: React.FC<FloatingQuickNavProps> = ({ onOpenResume
           <button
             onClick={onOpenResume}
             title="Download Academic CV / Resume (PDF & Print)"
-            className="min-h-[44px] flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#6D28D9] dark:from-[#A855F7] dark:to-[#7C3AED] text-white border border-white/20 text-xs font-mono font-bold shadow-[0_0_18px_rgba(168,85,247,0.4)] hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] backdrop-blur-xl transition-all hover:scale-105 active:scale-95 cursor-pointer touch-manipulation"
+            className="min-h-[44px] flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 text-slate-950 font-bold border border-cyan-300/40 text-xs font-mono shadow-[0_0_20px_rgba(56,189,248,0.35)] hover:shadow-[0_0_28px_rgba(56,189,248,0.55)] backdrop-blur-xl transition-all hover:scale-105 active:scale-95 cursor-pointer touch-manipulation"
           >
-            <FileText className="w-3.5 h-3.5 text-cyan-200" />
+            <FileText className="w-3.5 h-3.5 text-slate-950" />
             <span>CV / Resume</span>
           </button>
 
@@ -103,7 +103,7 @@ export const FloatingQuickNav: React.FC<FloatingQuickNavProps> = ({ onOpenResume
           <button
             onClick={scrollToTop}
             title="Scroll to Top"
-            className="min-h-[44px] min-w-[44px] p-2.5 rounded-full bg-white/90 dark:bg-[#0B0F17]/90 hover:bg-slate-100 dark:hover:bg-white/[0.08] text-slate-700 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/10 shadow-lg backdrop-blur-xl transition-all hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] flex items-center justify-center touch-manipulation"
+            className="min-h-[44px] min-w-[44px] p-2.5 rounded-full bg-white/90 dark:bg-[#070B14]/90 hover:bg-slate-100 dark:hover:bg-white/[0.08] text-slate-700 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-white/[0.08] shadow-lg backdrop-blur-xl transition-all hover:scale-110 active:scale-95 cursor-pointer hover:shadow-[0_0_15px_rgba(56,189,248,0.3)] flex items-center justify-center touch-manipulation"
             aria-label="Scroll to top"
           >
             <ArrowUp className="w-4 h-4 text-[#38BDF8]" />

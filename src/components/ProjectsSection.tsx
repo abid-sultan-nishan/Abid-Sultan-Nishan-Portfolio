@@ -34,7 +34,7 @@ export const ProjectsSection: React.FC = () => {
         </div>
 
         {/* Filter Controls (Executive Glass Segmented Buttons) */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-white/80 dark:bg-white/[0.03] rounded-2xl border border-slate-200 dark:border-white/10 backdrop-blur-xl overflow-x-auto scrollbar-none self-start md:self-auto shadow-sm max-w-full">
+        <div className="flex items-center gap-1.5 p-1.5 bg-white/80 dark:bg-[#070B14]/80 rounded-2xl border border-slate-200 dark:border-white/[0.08] backdrop-blur-xl overflow-x-auto scrollbar-none self-start md:self-auto shadow-sm max-w-full">
           {categories.map((cat) => {
             const isActive = activeFilter === cat;
             return (
@@ -43,7 +43,7 @@ export const ProjectsSection: React.FC = () => {
                 onClick={() => setActiveFilter(cat)}
                 className={`relative px-3.5 sm:px-4 py-2 min-h-[40px] text-xs font-mono font-medium rounded-xl transition-all duration-200 whitespace-nowrap cursor-pointer active:scale-[0.98] ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#A855F7] to-[#7C3AED] text-white shadow-md shadow-[#A855F7]/30 font-semibold'
+                    ? 'bg-gradient-to-r from-sky-400 via-cyan-400 to-sky-500 text-slate-950 font-bold shadow-[0_0_16px_rgba(56,189,248,0.35)]'
                     : 'text-slate-600 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.04]'
                 }`}
               >

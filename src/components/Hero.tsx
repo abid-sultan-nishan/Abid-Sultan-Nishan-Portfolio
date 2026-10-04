@@ -64,7 +64,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             className="space-y-3"
           >
             <div className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[#0284C7] dark:text-[#38BDF8] px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-[#38BDF8]/10 border border-sky-200 dark:border-[#38BDF8]/30 shadow-xs">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-tight text-[#0284C7] dark:text-[#38BDF8] px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-[#38BDF8]/10 border border-sky-200 dark:border-[#38BDF8]/30 shadow-xs">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0284C7] dark:bg-[#38BDF8] opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0284C7] dark:bg-[#38BDF8]" />
@@ -72,18 +72,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <span className="truncate max-w-[200px] sm:max-w-none">{portfolioData.personal.tagline}</span>
               </div>
 
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 dark:bg-[#A855F7]/10 border border-purple-200 dark:border-[#A855F7]/30 text-xs font-mono text-[#7C3AED] dark:text-[#C084FC] shadow-xs">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-50 dark:bg-[#A855F7]/10 border border-purple-200 dark:border-[#A855F7]/30 text-xs font-semibold text-[#7C3AED] dark:text-[#C084FC] shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#7C3AED] dark:text-[#A855F7]" />
                 <span>Open for Research Internships</span>
               </span>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-500 dark:text-[#94A3B8]">
-              <span className="text-slate-800 dark:text-slate-200 font-medium">CSE Undergraduate</span>
+            <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-500 dark:text-[#94A3B8]">
+              <span className="text-slate-800 dark:text-slate-200 font-semibold">CSE Undergraduate</span>
               <span aria-hidden="true" className="text-slate-400 dark:text-slate-600">·</span>
               <span>Uttara University</span>
               <span aria-hidden="true" className="text-slate-400 dark:text-slate-600">·</span>
-              <span className="text-[#38BDF8] font-medium">{portfolioData.personal.academicPeriod}</span>
+              <span className="text-[#38BDF8] font-semibold">{portfolioData.personal.academicPeriod}</span>
             </div>
           </motion.div>
 
@@ -96,57 +96,131 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             className="fluid-display font-bold tracking-tight text-slate-900 dark:text-white leading-[1.14] text-balance"
           >
             Exploring intelligence through{' '}
-            <span className="bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#34D399] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(56,189,248,0.25)]">
+            <span className="bg-gradient-to-r from-[#38BDF8] via-[#818CF8] to-[#C084FC] bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(56,189,248,0.25)]">
               language, learning
             </span>
             , and deep neural systems.
           </motion.h1>
 
-          {/* Supporting verified copy */}
+          {/* Concise High-Impact Value Proposition */}
           <motion.p
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] } },
             }}
-            className="fluid-body-lg text-slate-700 dark:text-slate-200 max-w-2xl leading-relaxed font-normal"
+            className="text-base sm:text-lg text-slate-200 dark:text-slate-200 max-w-2xl leading-relaxed font-normal"
           >
-            {portfolioData.personal.bioParagraph1}
+            {portfolioData.personal.valueProposition ||
+              'CSE Undergraduate & AI/NLP Researcher specializing in Large Language Models, Fine-tuning, and Intelligent Neural Architectures.'}
           </motion.p>
 
-          {/* Primary Actions: Prominent High-Contrast Call-to-Action Buttons */}
+          {/* Primary Call-to-Action (CTA) Buttons: Streamlined 2-Button Group */}
           <motion.div
             variants={{
               hidden: { opacity: 0, y: 18 },
               visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
             }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1"
           >
+            {/* Primary Action Button */}
             <button
               onClick={() => handleScrollTo('projects')}
-              className="inline-flex min-h-[48px] items-center justify-center gap-2 px-6 py-3 text-sm font-bold text-white dark:text-slate-950 bg-gradient-to-r from-[#0284C7] via-[#0369A1] to-[#0284C7] dark:from-[#38BDF8] dark:via-[#7DD3FC] dark:to-[#38BDF8] hover:brightness-110 active:scale-[0.98] rounded-xl transition-all shadow-md shadow-[#0284C7]/30 dark:shadow-[0_0_32px_rgba(56,189,248,0.6)] hover:shadow-lg hover:shadow-[#0284C7]/40 dark:hover:shadow-[0_0_46px_rgba(56,189,248,0.85)] hover:scale-[1.02] cursor-pointer text-center ring-2 ring-sky-500/20 dark:ring-white/20 shrink-0 touch-action-manipulation"
+              className="inline-flex min-h-[44px] items-center justify-center gap-2 px-6 py-2.5 text-sm font-bold text-slate-950 bg-gradient-to-r from-sky-400 via-cyan-300 to-sky-400 hover:brightness-110 active:scale-[0.98] rounded-xl transition-all shadow-[0_0_20px_rgba(56,189,248,0.35)] hover:shadow-[0_0_28px_rgba(56,189,248,0.55)] hover:scale-[1.01] cursor-pointer text-center shrink-0 touch-manipulation"
             >
               <span>Explore Selected Work</span>
-              <ArrowRight className="w-4 h-4 text-white dark:text-slate-950" />
+              <ArrowRight className="w-4 h-4 text-slate-950" />
             </button>
 
+            {/* Secondary Action Button: Outline / Ghost Style */}
             {onOpenResume && (
               <button
                 onClick={onOpenResume}
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 px-5 py-3 text-sm font-bold text-white bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#6D28D9] dark:from-[#A855F7] dark:to-[#7C3AED] hover:brightness-110 active:scale-[0.98] rounded-xl transition-all shadow-md shadow-purple-500/25 hover:shadow-lg hover:shadow-purple-500/35 hover:scale-[1.02] cursor-pointer text-center shrink-0 touch-action-manipulation"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-200 hover:text-white bg-slate-900/60 hover:bg-slate-800/80 border border-slate-700/80 hover:border-cyan-400/60 active:scale-[0.98] rounded-xl transition-all shadow-sm hover:shadow-[0_0_18px_rgba(56,189,248,0.2)] cursor-pointer text-center shrink-0 backdrop-blur-md touch-manipulation"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-4 h-4 text-cyan-400" />
                 <span>Download CV / Resume</span>
-                <Download className="w-3.5 h-3.5 opacity-80" />
+                <Download className="w-3.5 h-3.5 text-slate-400" />
               </button>
             )}
+          </motion.div>
 
+          {/* Streamlined Connect & Channel Icon Links (Secondary Group) */}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 15 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+            }}
+            className="flex flex-wrap items-center gap-2 pt-0.5"
+          >
+            {/* Quick Connect / Contact Action */}
             <button
               onClick={() => handleScrollTo('contact')}
-              className="inline-flex min-h-[48px] items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-slate-800 dark:text-white bg-white dark:bg-white/[0.08] hover:bg-slate-50 dark:hover:bg-white/[0.14] border border-slate-300 dark:border-white/25 active:scale-[0.98] rounded-xl transition-all cursor-pointer text-center backdrop-blur-md hover:border-slate-400 dark:hover:border-[#38BDF8]/60 shadow-xs shrink-0 touch-action-manipulation"
+              className="inline-flex min-h-[36px] items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-200 hover:text-cyan-300 bg-slate-800/50 hover:bg-slate-800/80 border border-slate-700/70 hover:border-cyan-500/40 transition-all cursor-pointer active:scale-95 touch-manipulation"
+              title="Get in touch / Collaborate"
             >
-              <Mail className="w-4 h-4 text-[#0284C7] dark:text-[#38BDF8]" />
+              <Mail className="w-3.5 h-3.5 text-cyan-400" />
               <span>Connect</span>
             </button>
+
+            <span className="text-slate-700 hidden sm:inline" aria-hidden="true">|</span>
+
+            {/* Social Channels Row */}
+            <div className="flex items-center gap-1 text-slate-400">
+              <a
+                href={portfolioData.personal.github}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-lg text-slate-400 hover:text-white bg-slate-800/30 hover:bg-slate-800/70 border border-slate-700/40 hover:border-slate-600 transition-all hover:scale-105"
+                title="GitHub Profile"
+                aria-label="GitHub Profile"
+              >
+                <Github className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={portfolioData.personal.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-lg text-slate-400 hover:text-[#38BDF8] bg-slate-800/30 hover:bg-slate-800/70 border border-slate-700/40 hover:border-[#38BDF8]/40 transition-all hover:scale-105"
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={portfolioData.personal.kaggle}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-lg text-slate-400 hover:text-cyan-300 bg-slate-800/30 hover:bg-slate-800/70 border border-slate-700/40 hover:border-cyan-400/40 transition-all hover:scale-105"
+                title="Kaggle Profile (ML & Datasets)"
+                aria-label="Kaggle Profile"
+              >
+                <KaggleIcon className="w-3.5 h-3.5 text-cyan-400" />
+              </a>
+
+              <a
+                href={portfolioData.personal.discord}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-lg text-slate-400 hover:text-purple-300 bg-slate-800/30 hover:bg-slate-800/70 border border-slate-700/40 hover:border-purple-400/40 transition-all hover:scale-105"
+                title="Discord Developer Profile"
+                aria-label="Discord Developer Profile"
+              >
+                <DiscordIcon className="w-3.5 h-3.5 text-purple-400" />
+              </a>
+
+              <button
+                onClick={handleCopyEmail}
+                className="inline-flex min-h-[34px] items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-slate-300 hover:text-cyan-300 bg-slate-800/30 hover:bg-slate-800/70 border border-slate-700/40 hover:border-cyan-400/40 transition-all hover:scale-105 cursor-pointer group text-xs font-medium"
+                title="Copy email address"
+                aria-label="Copy email address"
+              >
+                <Copy className="w-3 h-3 text-slate-400 group-hover:text-cyan-400" />
+                <span className="truncate max-w-[130px] hidden md:inline">{portfolioData.personal.email}</span>
+                <span className="hidden sm:inline md:hidden text-[11px]">Email</span>
+              </button>
+            </div>
           </motion.div>
 
           {/* Grouped Secondary Metrics Container */}
@@ -158,11 +232,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             className="pt-2 max-w-xl"
           >
             <div className="flex items-center justify-between gap-2 mb-2">
-              <span className="font-mono text-[11px] font-semibold text-[#A855F7] dark:text-[#C084FC] uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-[11px] font-semibold text-[#A855F7] dark:text-[#C084FC] uppercase tracking-wider flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#A855F7]" />
                 <span>Empirical Telemetry Snapshot</span>
               </span>
-              <div className="flex items-center gap-1.5 text-xs font-mono text-slate-700 dark:text-slate-300 font-medium">
+              <div className="flex items-center gap-1.5 text-xs font-medium text-slate-700 dark:text-slate-300">
                 <MapPin className="w-3.5 h-3.5 text-[#38BDF8] shrink-0" />
                 <span>{portfolioData.personal.location}</span>
               </div>
@@ -170,18 +244,18 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 container-card">
               <div className="card-subtle p-3 sm:p-3.5 group cursor-default">
-                <div className="text-sm sm:text-base font-mono font-bold text-[#38BDF8] group-hover:scale-105 transition-transform origin-left flex items-center gap-1.5">
+                <div className="text-sm sm:text-base font-mono font-bold tabular-nums text-[#38BDF8] group-hover:scale-105 transition-transform origin-left flex items-center gap-1.5">
                   <span>-1.42 PPL</span>
                 </div>
-                <div className="text-xs text-slate-700 dark:text-slate-200 font-mono font-medium mt-0.5">
+                <div className="text-xs text-slate-700 dark:text-slate-200 font-medium mt-0.5">
                   AdaLoRA-Indic Drop
                 </div>
               </div>
               <div className="card-subtle p-3 sm:p-3.5 group cursor-default">
-                <div className="text-sm sm:text-base font-mono font-bold text-[#A855F7] group-hover:scale-105 transition-transform origin-left flex items-center gap-1.5">
+                <div className="text-sm sm:text-base font-mono font-bold tabular-nums text-[#A855F7] group-hover:scale-105 transition-transform origin-left flex items-center gap-1.5">
                   <span>-38.2% Active</span>
                 </div>
-                <div className="text-xs text-slate-700 dark:text-slate-200 font-mono font-medium mt-0.5">
+                <div className="text-xs text-slate-700 dark:text-slate-200 font-medium mt-0.5">
                   Adapter Pruning
                 </div>
               </div>
@@ -189,97 +263,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 <div className="text-sm sm:text-base font-mono font-bold text-emerald-600 dark:text-[#34D399] group-hover:scale-105 transition-transform origin-left flex items-center gap-1.5">
                   <span>IndicGLUE 4-bit</span>
                 </div>
-                <div className="text-xs text-slate-700 dark:text-slate-200 font-mono font-medium mt-0.5">
+                <div className="text-xs text-slate-700 dark:text-slate-200 font-medium mt-0.5">
                   Verified Baselines
                 </div>
               </div>
             </div>
-          </motion.div>
-
-          {/* Secondary Links & Quick Actions */}
-          <motion.div
-            variants={{
-              hidden: { opacity: 0, y: 15 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-            }}
-            className="pt-1 flex flex-wrap items-center gap-1.5 sm:gap-2.5 text-xs font-mono text-slate-700 dark:text-slate-300 font-medium"
-          >
-            <span className="text-slate-500 dark:text-slate-400 py-1">Channels:</span>
-            <a
-              href={portfolioData.personal.github}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-[#38BDF8] hover:bg-white/[0.04] transition-all"
-              title="GitHub Profile"
-            >
-              <Github className="w-3.5 h-3.5" />
-              <span>GitHub</span>
-            </a>
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
-            <a
-              href={portfolioData.personal.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-[#38BDF8] hover:bg-white/[0.04] transition-all"
-              title="LinkedIn Profile"
-            >
-              <Linkedin className="w-3.5 h-3.5" />
-              <span>LinkedIn</span>
-            </a>
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
-            <a
-              href={portfolioData.personal.kaggle}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-[#38BDF8] hover:bg-white/[0.04] transition-all"
-              title="Kaggle Profile (ML & Datasets)"
-            >
-              <KaggleIcon className="w-3.5 h-3.5 text-[#38BDF8]" />
-              <span>Kaggle</span>
-            </a>
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
-            <a
-              href={portfolioData.personal.discord}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-[#A855F7] hover:bg-white/[0.04] transition-all"
-              title="Discord Developer Profile"
-            >
-              <DiscordIcon className="w-3.5 h-3.5 text-[#A855F7]" />
-              <span>Discord</span>
-            </a>
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
-            <a
-              href={portfolioData.personal.facebook}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-[#38BDF8] hover:bg-white/[0.04] transition-all"
-              title="Facebook Profile"
-            >
-              <FacebookIcon className="w-3.5 h-3.5 text-[#38BDF8]" />
-              <span>Facebook</span>
-            </a>
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
-            <a
-              href={portfolioData.personal.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-pink-400 hover:bg-white/[0.04] transition-all"
-              title="Instagram Profile"
-            >
-              <InstagramIcon className="w-3.5 h-3.5 text-pink-400" />
-              <span>Instagram</span>
-            </a>
-            <span className="text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
-            <button
-              onClick={handleCopyEmail}
-              className="inline-flex min-h-[36px] items-center gap-1.5 px-2 py-1 rounded-lg hover:text-[#38BDF8] hover:bg-white/[0.04] transition-all cursor-pointer group min-w-0"
-              title="Click to copy email address"
-            >
-              <Mail className="w-3.5 h-3.5 shrink-0" />
-              <span className="truncate max-w-[130px] sm:max-w-[180px]">{portfolioData.personal.email}</span>
-              <Copy className="w-3 h-3 text-slate-400 group-hover:text-[#38BDF8] shrink-0" />
-            </button>
           </motion.div>
         </motion.div>
 
@@ -295,14 +283,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             <div className="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
               <div className="flex items-center gap-2">
                 <span className="flex h-2 w-2 rounded-full bg-[#38BDF8] animate-pulse" />
-                <span className="font-mono text-xs font-semibold text-slate-500 dark:text-[#94A3B8] tracking-wider">
+                <span className="text-xs font-semibold text-slate-500 dark:text-[#94A3B8] tracking-wider uppercase">
                   RESEARCHER PROFILE
                 </span>
               </div>
               <div className="flex items-center gap-1 bg-slate-100 dark:bg-white/[0.04] p-1 rounded-xl border border-slate-200 dark:border-white/10 backdrop-blur-md">
                 <button
                   onClick={() => setActiveVisualTab('photo')}
-                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-mono font-medium rounded-lg transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                     activeVisualTab === 'photo'
                       ? 'bg-gradient-to-r from-[#A855F7] to-[#7C3AED] text-white shadow-sm shadow-[#A855F7]/30'
                       : 'text-slate-500 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white'
@@ -313,7 +301,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 </button>
                 <button
                   onClick={() => setActiveVisualTab('neural')}
-                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-mono font-medium rounded-lg transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                     activeVisualTab === 'neural'
                       ? 'bg-gradient-to-r from-[#38BDF8] to-[#0284C7] text-white shadow-sm shadow-[#38BDF8]/30'
                       : 'text-slate-500 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white'
@@ -324,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 </button>
                 <button
                   onClick={() => setActiveVisualTab('concepts')}
-                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-mono font-medium rounded-lg transition-all cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 text-xs font-medium rounded-lg transition-all cursor-pointer ${
                     activeVisualTab === 'concepts'
                       ? 'bg-gradient-to-r from-[#38BDF8] via-[#A855F7] to-[#8B5CF6] text-white shadow-sm shadow-[#A855F7]/30'
                       : 'text-slate-500 dark:text-[#94A3B8] hover:text-slate-900 dark:hover:text-white'
@@ -337,7 +325,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
             </div>
 
             {activeVisualTab === 'photo' ? (
-              <div className="card-premium p-3.5 sm:p-4 group transition-all duration-500">
+              <div className="card-premium p-3.5 sm:p-4 group rounded-[22px] transition-all duration-500">
                 {/* Ambient glow behind image */}
                 <div
                   className="pointer-events-none absolute -top-16 -right-16 h-64 w-64 rounded-full bg-[#A855F7]/25 blur-3xl transition-opacity duration-500 group-hover:bg-[#A855F7]/35"
@@ -349,7 +337,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                 />
 
                 <div
-                  className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-2xl border border-slate-200/90 dark:border-white/10"
+                  className="relative aspect-[3/4] sm:aspect-[4/5] w-full overflow-hidden rounded-[20px] border border-slate-200/90 dark:border-white/10"
                   style={{
                     background: 'radial-gradient(ellipse at 50% 20%, rgba(56, 189, 248, 0.18) 0%, rgba(168, 85, 247, 0.10) 45%, #07111F 100%)',
                     contain: 'paint layout',
@@ -385,19 +373,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
                       <div className="text-xs font-display font-semibold text-white">
                         {portfolioData.personal.name}
                       </div>
-                      <div className="text-[11px] font-mono text-[#38BDF8]">
+                      <div className="text-[11px] font-medium text-[#38BDF8]">
                         {portfolioData.personal.title}
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-[#A855F7]/20 text-purple-200 border border-[#A855F7]/40 whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium bg-[#A855F7]/20 text-purple-200 border border-[#A855F7]/40 whitespace-nowrap">
                         Uttara University
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-3 pt-2 px-1 flex items-center justify-between text-xs font-mono text-slate-500 dark:text-[#94A3B8]">
+                <div className="mt-3 pt-2 px-1 flex items-center justify-between text-xs font-medium text-slate-500 dark:text-[#94A3B8]">
                   <span className="flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-[#38BDF8]" />
                     <span>Focus: NLP &amp; Deep Neural Systems</span>
@@ -412,10 +400,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResume }) => {
               <div className="card-premium p-4 sm:p-5 space-y-4">
                 <div className="flex items-center justify-between border-b border-white/10 pb-3">
                   <div>
-                    <span className="text-xs font-mono text-[#38BDF8] uppercase tracking-wider block font-semibold">
+                    <span className="text-xs font-semibold text-[#38BDF8] uppercase tracking-wider block">
                       Abstract Vector Concept Art
                     </span>
-                    <span className="text-[11px] font-mono text-slate-500 dark:text-[#94A3B8]">
+                    <span className="text-[11px] font-medium text-slate-500 dark:text-[#94A3B8]">
                       Cyan, purple &amp; blue neon vector line-art
                     </span>
                   </div>
